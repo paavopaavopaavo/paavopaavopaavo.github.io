@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Minesweeper</title>
+  <title>Minesweeper</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
 
 </head>
@@ -12,6 +12,14 @@
   <h1>Minesweeper</h1>
   <div id="hud">
   <p>🚩 <span id="flagsRemaining">10</span></p>
+  </div>
+  <div>
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty" onchange="setDifficulty()">
+      <option value="easy">Easy (8x8, 10 mines)</option>
+      <option value="medium">Medium (12x12, 15 mines)</option>
+      <option value="hard">Hard (15x15, 20 mines)</option>
+    </select>
   </div>
   <div id="board"></div>
   <button onclick="startGame()" id="startbutton">Start Game</button>

@@ -1,9 +1,24 @@
-const boardSize = 8;
-const numMines = 10;
-let board = [];
-let firstClick = true;
-let flagsRemaining = numMines;
-let gameOver = false;
+let boardSize = 8;
+let numMines = 10;
+
+function setDifficulty() {
+    const difficulty = document.getElementById('difficulty').value;
+    switch(difficulty) {
+        case 'easy':
+            boardSize = 8;
+            numMines = 10;
+            break;
+        case 'medium':
+            boardSize = 12;
+            numMines = 15;
+            break;
+        case 'hard':
+            boardSize = 15;
+            numMines = 20;
+            break;
+    }
+    startGame();
+}
 
 function startGame() {
     board = createEmptyBoard(boardSize);
@@ -69,13 +84,23 @@ function calculateNeighborMines(board) {
 function renderBoard() {
     const boardElement = document.getElementById('board');
     boardElement.innerHTML = '';
+    boardElement.style.gridTemplateColumns = `repeat(${boardSize}, 40px)`;
     for (let i = 0; i < boardSize; i++) {
         for (let j = 0; j < boardSize; j++) {
             const cell = document.createElement('button');
             cell.className = 'cell';
             if (board[i][j].isRevealed) {
-                cell.textContent = board[i][j].isMine ? '💣' : board[i][j].neighborMines || '';
-                cell.style.backgroundColor = board[i][j].isMine ? '#f00' : '#ddd';
+                if (board[i][j].isMine) {
+                    cell.textContent = '💣';
+                    cell.style.backgroundColor = '#f00';
+                } else {
+                    cell.textContent = board[i][j].neighborMines || '';
+                    if (board[i][j].neighborMines > 0) {
+                        cell.style.backgroundColor = '#C0C9C9'; // Single color for 1-8 mines
+                    } else {
+                        cell.style.backgroundColor = '#ddd'; // Default background for revealed cells
+                    }
+                }
             } else if (board[i][j].isFlagged) {
                 cell.textContent = '🚩';
                 cell.style.backgroundColor = '#fdd';
@@ -92,8 +117,8 @@ function renderBoard() {
             boardElement.appendChild(cell);
         }
     }
-  
 }
+
 
 function revealCell(x, y) {
     if (firstClick) {

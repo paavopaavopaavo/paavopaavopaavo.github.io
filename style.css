@@ -12,6 +12,10 @@ h1 {
   margin-bottom: -2vh;
 }
 
+label {
+  font-size: small;
+}
+
 #hud {
  display: flex;
  justify-content: center; 
