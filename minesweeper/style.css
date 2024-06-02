@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+body {
+  font-size: 24px;
+  font-family: Raleway, sans-serif;
+  text-align: center;
+  transition: background-color .5s ease-in-out;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+h1 {
+  margin-top: 15vh;
+  margin-bottom: -2vh;
+}
+
+label {
+  font-size: small;
+}
+
+#hud {
+  display: flex;
+  justify-content: center; 
+  font-size: 30px
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.191);
+  background-color: #eee;
+  font-family: Raleway, sans-serif;
+}
+
+button:active {
+  box-shadow: 0px 3px rgba(0, 0, 0, 0.191);
+  transform: translateY(2px);
+}
+
+#startbutton {
+  width: 100px;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(8, 40px);
+  gap: 2px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0px solid #ccc;
+  background-color: #eee;
+  font-size: 24px;
+  transition: background-color 0.3s ease; /* Add transition effect */
+}
