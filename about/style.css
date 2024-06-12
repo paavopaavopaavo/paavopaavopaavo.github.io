@@ -60,6 +60,12 @@ a:active {
   color: darkseagreen;
 }
 
+/*
+
+NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- 
+
+*/
+
 #homepage-link {
   width: 50px;
   margin-bottom: 10px;
@@ -81,16 +87,29 @@ li {
   float: left;
   cursor: pointer;
 }
-
+  
 .navbar-link:hover {
   color: darkseagreen;
-}
-
+} 
+  
 .navbar-link {
   display: block;
   padding: 12px;
+  color: black;
 }
 
 ul li a img {
   vertical-align: middle; /* Ensure image is vertically aligned */
+}
+
+footer p {
+  color: gray;
+  text-align: center;
+  font-size: medium;
+  padding: 1rem 0;
+  position: relative;
+  top: 47.5vh;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto; /* Ensure footer stays at the bottom */
 }
