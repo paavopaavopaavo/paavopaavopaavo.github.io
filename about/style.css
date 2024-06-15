@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50vh;
   margin: 0;
 }
 
@@ -21,6 +21,10 @@ body {
   width: 750px;
   word-wrap: break-word;
   display: inline-flex;
+}
+
+#text {
+  padding-right: 0px;
 }
 
 p {
@@ -112,4 +116,31 @@ footer p {
   bottom: 0;
   width: 100%;
   margin-top: auto; /* Ensure footer stays at the bottom */
+}
+
+@media screen and (max-width: 750px) {
+  body {
+    font-size: 20px;
+  }
+
+  #pfp {
+    width: 0;
+    height: 0;
+    border-radius: 0px;
+    border: 0px ridge #B56424;
+    visibility: hidden;
+    padding: -5px
+  }
+
+  #socials-container {
+    visibility: hidden;
+  }
+  
+  #socials {
+    visibility: hidden;
+  }
+
+  #text {
+    padding-right: 15px;
+  }
 }
