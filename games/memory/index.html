@@ -3,18 +3,18 @@
 <head>
     <meta property="og:title" content="Minesweeper">
     <meta property="og:type" content="application">
-    <meta property="og:url" content="https://paavopaavopaavo.github.io/games">
-    <meta property="og:image" content="https://paavopaavopaavo.github.io/games/embedimage.png">
+    <meta property="og:url" content="https://paavopaavopaavo.github.io/games/minesweeper">
+    <meta property="og:image" content="https://paavopaavopaavo.github.io/games/minesweeper/embedimage.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="450">
-
+  
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper - paavopaavopaavo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
-    <title>Paavopaavopaavo</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <ul>
@@ -28,23 +28,14 @@
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
 
-    <div>
-        <div class="gallery">
-            <a target="_blank" href="/games/minesweeper/index.html">
-                <img src="/games/minesweeper/embedimage.png" alt="Minesweeper" width="300" height="auto">
-            </a>
-            <div class="desc">Minesweeper</div>
-        </div>
-
-        <div class="gallery">
-            <a target="_blank" href="/games/memory/index.html">
-                <img src="/games/memory/embedimage.png" alt="Memory" width="300" height="auto">
-            </a>
-            <div class="desc">Memory</div>
-        </div>
+    <div class="game-container">
+        <div id="game-board" class="game-board"></div>
     </div>
+
     <footer>
         <p>© Paavo Sadeharju 2024. All rights reserved.</p>
     </footer>
+    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
