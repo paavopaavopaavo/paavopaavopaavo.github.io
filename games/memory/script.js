@@ -99,4 +99,15 @@ function initGame() {
   });
 }
 
+function resetGame() {
+  gameBoard.innerHTML = ''; // Clear the game board
+}
+
+function restartGame() {
+  resetGame();
+  initGame();
+}
+
 initGame();
+
+window.restartGame = restartGame;

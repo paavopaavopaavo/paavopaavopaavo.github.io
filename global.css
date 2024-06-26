@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+
+body {
+    font-family: Raleway, sans-serif;
+}
+
+button {
+    background-color: white;
+    border: 1.25px solid darkseagreen;
+    color: darkseagreen;
+    font-family: Raleway, sans-serif;
+    width: 15vw;
+    height: 5vh;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s
+}
+  
+button:hover {
+    background-color: darkseagreen;
+    border: 1.25px solid darkseagreen;
+    color: white;
+}
+  

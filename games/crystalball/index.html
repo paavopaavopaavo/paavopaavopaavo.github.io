@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:title" content="Minesweeper">
+    <meta property="og:title" content="Crystalball">
     <meta property="og:type" content="application">
-    <meta property="og:url" content="https://paavopaavopaavo.github.io/games/minesweeper">
-    <meta property="og:image" content="https://paavopaavopaavo.github.io/games/minesweeper/embedimage.png">
+    <meta property="og:url" content="https://paavopaavopaavo.github.io/games/crystalball">
+    <meta property="og:image" content="https://paavopaavopaavo.github.io/games/crystalball/embedimage.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="450">
   
     <meta charset="UTF-8">
-    <title>Memory - paavopaavopaavo</title>
+    <title>Crystalball - paavopaavopaavo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
@@ -28,11 +28,9 @@
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
 
-    <div class="game-container">
-        <div id="game-board" class="game-board"></div>
-    </div>
-
-    <button onclick="restartGame()" type="button">Restart</button>
+    <div id="crystalball"><p id="crystalball-answer"></p></div>
+    <input placeholder="Ask your ✨ magical ✨ questions" id="question-input" maxlength="50">
+    <button type="button" id="send-question" onclick="askQuestion()">></button>
 
     <footer>
         <p>© Paavo Sadeharju 2024. All rights reserved.</p>
