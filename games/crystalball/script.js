@@ -118,10 +118,10 @@ function getInputText(inputText) {
 function askQuestion() {
     // Input to answer
     // getInputText(document.getElementById("question-input").value);
-
+    
     // Clear question field
     //document.getElementById('question-input').value = "";
-
+    
     getRandomItem();
 }
 
@@ -132,4 +132,20 @@ function getRandomItem() {
     getInputText(responses[randomIndex])
 }
 
+
+function share() {
+    let questioninput = document.getElementById("question-input").value;
+    let crystalballanswer = document.getElementById("crystalball-answer").innerText;
+    let sharetext = `💬: ${questioninput}\n🔮: ${crystalballanswer}`;
+    if (navigator.share) {
+        navigator.share({
+            text: sharetext,
+            url: 'https://paavopaavopaavo.github.io/games/crystalball/',
+        })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing', error));
+    }
+}
+
 window.askQuestion = askQuestion;
+window.share = share;

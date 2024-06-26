@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
 
 body {
   font-size: 24px;
@@ -25,11 +25,11 @@ body {
 
 #crystalball-answer {
   font-size: 3.5vw;
-  color: white;
+  color: rgb(251, 220, 255);
   position: absolute;
   top: 41%;
   left: 50%;
-  font-family: "Playwrite MX", cursive;
+  font-family: "Playwrite NZ", cursive;
   transform: translate(-50%, -50%);
 }
 
@@ -49,6 +49,17 @@ body {
   font-family: Raleway, sans-serif;
   padding: 15px;
   margin-left: -7px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(250,250,250);
+}
+
+#share {
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  width: 10vw;
+  font-family: Raleway, sans-serif;
+  padding: 15px;
   text-align: center;
   cursor: pointer;
   background-color: rgb(250,250,250);
