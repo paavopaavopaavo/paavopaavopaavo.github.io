@@ -147,5 +147,12 @@ function share() {
     }
 }
 
+function clickPress(event) {
+    if (event.key == "Enter") {
+        askQuestion();
+    }
+}
+
 window.askQuestion = askQuestion;
 window.share = share;
+window.clickPress = clickPress;

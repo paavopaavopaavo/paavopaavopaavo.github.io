@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
+@import url("/global.css");
+
+#quote {
+    font-size: xx-large;
+    font-family: Times;
+    width: 80vw;
+    margin: auto;
+    text-align: center;
+    margin-top: 15vw;
+    font-style: italic;
+}
+
+.author {
+    margin: auto;
+    margin-top: 3vw;
+    text-align: center;
+    font-size: x-large;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+}

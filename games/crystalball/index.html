@@ -8,7 +8,7 @@
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="450">
-  
+
     <meta charset="UTF-8">
     <title>Crystalball - paavopaavopaavo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +30,7 @@
 
     <div id="crystalball"><p id="crystalball-answer"></p></div>
     <button type="button" id="share" onclick="share()">Share</button>
-    <input placeholder="Ask your ✨ magical ✨ questions" id="question-input" maxlength="50">
+    <input placeholder="Ask your questions here " id="question-input" onkeypress="clickPress(event)" maxlength="50">
     <button type="button" id="send-question" onclick="askQuestion()">></button>
 
     <footer>
