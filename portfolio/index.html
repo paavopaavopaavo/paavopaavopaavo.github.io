@@ -6,7 +6,6 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <title>Paavopaavopaavo</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
     <ul>
@@ -20,11 +19,82 @@
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
 
-    <img src="https://media1.tenor.com/m/3H_st0qOVwoAAAAd/tucan-funny.gif" style="display: block; margin-left: auto; margin-right: auto;">
-    <h2>Nothing here! Come again later :)</h2>
+    <p id="start-text">
+        Hiya! This is my own little art gallery. 
+        If you like my little paintings and what not, you can <a id="link-share" onclick="share()">share this website</a> for others to see! <br>
+        This page is updated everytime there is new art.<pre>*    *    *</pre><br><br><br><br>
+    </p>
+
+
+
+    <div id="art-container">
+        <div class="small-art">
+            <img src="./artwork/lilja.png" class="art-image">
+            <h2>Lilja</h2>
+            <p class="art-desc">Portrait of my sister. Faceless. Without body. Mm. No more comments.</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/cmy.jpg" class="art-image">
+            <h2>CMY</h2>
+            <p class="art-desc">Tried to use cyan, magenta and yellow as in the CMY color model as the palette/inspiration.</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/lavalamp.png" class="art-image">
+            <h2>Lavalamp</h2>
+            <p class="art-desc">Classic art practice where you draw blobs and then make faces out of them. Skulls, bones and a pelvis. Can you spot yourself in there?</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/roses.jpg" class="art-image">
+            <h2>Roses</h2>
+            <p class="art-desc">Was looking for inspiration and some roses were on a vase. "Inspiration can strike anywhere!", right?</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/daffodils.jpg" class="art-image">
+            <h2>Daffodils</h2>
+            <p class="art-desc">Hey, skulls are hard! ...and daffodils pretty. (invasive, ha!)</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/ifeelnice.jpeg" class="art-image wide-image">
+            <h2>I Feel Nice</h2>
+            <p class="art-desc"><i>...like sugar and spice...</i> It's actually just salt and pepper but I like the song.</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/embr_roses.jpeg" class="art-image">
+            <h2>Roses</h2>
+            <p class="art-desc">This and "Butterfly" are both some embroidery practice I did. The roses are surprisingly simple for something so pretty.</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/embr_butterfly.jpg" class="art-image">
+            <h2>Butterfly</h2>
+            <p class="art-desc">This was meant to be a lemon. Kinda screwed up with that one.</p>
+        </div>
+        <div class="small-art">
+            <img src="./artwork/selfportrait.png" class="art-image">
+            <h2>Self portrait</h2>
+            <p class="art-desc"><i>Who is this handsome young man..?</i> The search keeps going.</p>
+        </div>
+    </div>
+
+    <p id="start-text">
+        <i>"Why so many skulls?"</i> Skulls are a geometrically complex shape that can easily be recognized. What does that say about me? Who knows.
+        <br> 
+    </p>
 
     <footer>
         <p>© Paavo Sadeharju 2024. All rights reserved.</p>
     </footer>
+
+    <script>
+        function share() {
+            if (navigator.share) {
+                navigator.share({
+                    url: 'https://paavopaavopaavo.github.io/portfolio',
+                })
+                    .then(() => console.log('Successful share'))
+                    .catch((error) => console.log('Error sharing', error));
+            }
+        }
+        window.share = share;
+    </script>
 </body>
 </html>
