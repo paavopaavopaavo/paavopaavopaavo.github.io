@@ -13,11 +13,12 @@ body {
 .game-container {
     width: 80%;
     max-width: 600px;
+    margin: auto;
 }
 
 .game-board {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Ensure cards fill the whole width */
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ; /* Ensure cards fill the whole width */
     gap: 10px;
 }
 
@@ -28,8 +29,6 @@ body {
   cursor: pointer;
   perspective: 1000px;
   display: flex;
-  justify-content: center;
-  align-items: center; /* Center contents vertically */
 }
 
 .card img {
@@ -66,56 +65,28 @@ body {
   transform: rotateY(180deg);
 }
 
-/*
+button {
+  width: 100px
+}
 
-NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- 
-
-*/
-
-#homepage-link {
-    width: 50px;
-    margin-bottom: 10px;
-  }
-  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center items vertically */
-    transition: color 200ms;
-  }
-  
-  li {
-    display: inline;
-    float: left;
-    cursor: pointer;
-  }
-    
-  .navbar-link:hover {
-    color: darkseagreen;
-  } 
-    
-  .navbar-link {
-    display: block;
-    padding: 12px;
-    color: black;
-  }
-  
-  ul li a img {
-    vertical-align: middle; /* Ensure image is vertically aligned */
+@media (max-width: 750px) {
+  .game-board {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 
-footer p {
-    color: gray;
-    text-align: center;
-    font-size: medium;
-    padding: 1rem 0;
-    position: relative;
-    top: 47.5vh;
-    bottom: 0;
-    width: 100%;
-    margin-top: auto; /* Ensure footer stays at the bottom */
+  .card {
+    width: 80px;
+    height: 113.6px;
   }
+}
+
+@media (max-width: 500px) {
+  .game-board {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .card {
+    width: 80px;
+    height: 113.6px;
+  }
+}

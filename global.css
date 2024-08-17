@@ -79,6 +79,10 @@ a:active {
     color: darkseagreen;
 }
   
+.footer-icon {
+    color: var(--gray)
+}
+
 /*
 
 NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- 
