@@ -2,14 +2,14 @@ const images = [
   { name: 'beaver', img: './images/beaver.png' },
   { name: 'cactus', img: './images/cactus.png' },
   { name: 'crocodile', img: './images/crocodile.png' },
-//  { name: 'dinosaur', img: './images/dinosaur.png' },
-//  { name: 'flower', img: './images/flower.png' },
+  { name: 'dinosaur', img: './images/dinosaur.png' },
+  { name: 'flower', img: './images/flower.png' },
   { name: 'hedgehog', img: './images/hedgehog.png' },
-//  { name: 'lizard', img: './images/lizard.png' },
+  { name: 'lizard', img: './images/lizard.png' },
   { name: 'mushroom', img: './images/mushroom.png' },
   { name: 'sheep', img: './images/sheep.png' },
   { name: 'sunflower', img: './images/sunflower.png' },
-//  { name: 'tiger', img: './images/tiger.png' },
+  { name: 'tiger', img: './images/tiger.png' },
   { name: 'whale', img: './images/whale.png' }
 ];
 

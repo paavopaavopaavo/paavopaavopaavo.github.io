@@ -1,40 +1,57 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
 @import url("/global.css");
 
 body {
-  font-size: 24px;
-  font-family: Raleway, sans-serif;
   align-items: center;
   text-align: center;
-  transition: background-color .5s ease-in-out;
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+} 
+
+a {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(128, 128, 128, 0);
+  transition: all .2s;
 }
 
-div.gallery {
-  margin: 5px;
-  border: 1.25px solid #d0d0d0;
-  border-radius: 10px;
-  float: left;
-  width: 180px;
-  border-radius: 10px 10px 10px 10px;
+a:hover {
+  color: black;
+  text-underline-offset: 1px;
+  text-decoration-color: black;
 }
 
-div.gallery:hover {
-  border: 1.25px solid darkseagreen;
+.game-container {
+  display: inline-grid;
+  border-radius: 5px;
+  row-gap: 25px;
+  column-gap: 25px;
+  grid-template-columns: 1fr 1fr;
 }
 
-div.gallery img {
+.game {
+  border: gainsboro 1px solid;
+  border-radius: 5px;
+  width: 40vw;
+  box-shadow: 0px 0px 0px var(--light-gray);
+}
+
+.game-image {
+  border-radius: 5px 5px 0px 0px;
   width: 100%;
-  height: auto;
-  border-radius: 10px 10px 0px 0px;
 }
 
-div.desc {
+.game-desc {
+  background-color: var(--light-gray);
   padding: 15px;
-  text-align: center;
-  background-color: rgb(250, 250, 250);
-  border-radius: 0px 0px 10px 10px;
-  margin-top: -7px;
+  margin-top: -5px;
+  border-radius: 0px 0px 5px 5px;
 }
 
+@media (max-width: 550px) {
+  .game-container {
+    grid-template-columns: 1fr;
+  }
+
+  .game {
+    width: 80vw;
+  }
+}
