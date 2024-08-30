@@ -105,7 +105,10 @@ const responses = [
     "Patience will reveal all",
     "The answer lies in the future",
 
-    "lmao"
+    "lmao",
+    "LOL",
+    "haha",
+    "..wtf?"
 ];
 
 function getInputText(inputText) {

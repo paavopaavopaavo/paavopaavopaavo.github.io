@@ -17,7 +17,7 @@
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <ul>
+    <ul class="navbar">
         <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link">
             <img id="homepage-link" src="/assets/paavopaavopaavo.png"
             onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
@@ -29,13 +29,14 @@
     </ul>
 
     <div id="crystalball"><p id="crystalball-answer"></p></div>
-    <button type="button" id="share" onclick="share()">Share</button>
-    <input placeholder="Ask your questions here " id="question-input" onkeypress="clickPress(event)" maxlength="50">
-    <button type="button" id="send-question" onclick="askQuestion()">></button>
-
+    <div id="button-container">
+        <button type="button" id="share" onclick="share()"><i class="fa-regular fa-share-from-square"></i></button>
+        <input placeholder="Ask your questions here " id="question-input" onkeypress="clickPress(event)" maxlength="35">
+        <button type="button" id="send-question" onclick="askQuestion()"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-solid fa-hand-peace footer-icon"></i></p>
+        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
     </footer>
     <script src="script.js"></script>
-</body>
+</body> 
 </html>
