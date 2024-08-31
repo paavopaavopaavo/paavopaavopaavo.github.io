@@ -1,5 +1,21 @@
 let boardSize = 8;
 let numMines = 10;
+let timerInterval;
+let seconds = 0;
+
+function hint() {
+    if (!gameOver) {
+        for (let i = 0; i < boardSize; i++) {
+            for (let j = 0; j < boardSize; j++) {
+                if (board[i][j].isMine && !board[i][j].isRevealed) {
+                    board[i][j].isRevealed = true;
+                    renderBoard();
+                    return;
+                }
+            }
+        }
+    }
+}
 
 function setDifficulty() {
     const difficulty = document.getElementById('difficulty').value;
@@ -21,15 +37,32 @@ function setDifficulty() {
 }
 
 function startGame() {
+    clearInterval(timerInterval);
+    seconds = 0;
     board = createEmptyBoard(boardSize);
     firstClick = true;
     flagsRemaining = numMines;
+    numStartMines = numMines;
     gameOver = false;
     document.getElementById('flagsRemaining').textContent = flagsRemaining;
+    document.getElementById('numMines').textContent = numStartMines;
     renderBoard();
     const startButtonElement = document.getElementById('startbutton');
     startButtonElement.textContent = "Restart Game";
     document.body.style.backgroundColor = 'white';
+
+    timerInterval = setInterval(function() {
+        seconds += 0.1;
+        seconds = Math.round(seconds * 10) / 10;
+        if (Math.floor(seconds) === seconds) {
+            document.getElementById('timer').textContent = seconds + ".0";
+        } else {
+            document.getElementById('timer').textContent = seconds;
+        }
+    }, 100);
+
+    document.getElementById('hintbutton').disabled = true;
+
 }
 
 function createEmptyBoard(size) {
@@ -58,6 +91,7 @@ function placeMines(board, excludeX, excludeY) {
             minesPlaced++;
         }
     }
+    document.getElementById('hintbutton').disabled = false;
 }
 
 function calculateNeighborMines(board) {
@@ -91,7 +125,7 @@ function renderBoard() {
             cell.className = 'cell';
             if (board[i][j].isRevealed) {
                 if (board[i][j].isMine) {
-                    cell.textContent = '💣';
+                    cell.innerHTML = '💣';
                     cell.style.backgroundColor = '#f00';
                 } else {
                     cell.textContent = board[i][j].neighborMines || '';
@@ -102,7 +136,7 @@ function renderBoard() {
                     }
                 }
             } else if (board[i][j].isFlagged) {
-                cell.textContent = '🚩';
+                cell.innerHTML = '🚩';
                 cell.style.backgroundColor = '#fdd';
             } else {
                 cell.textContent = ' ';
@@ -139,8 +173,17 @@ function revealCell(x, y) {
     if (board[x][y].isMine) {
         board[x][y].isRevealed = true;
         gameOver = true;
+
+        // Set the explosion emoji for the clicked cell
+        const boardElement = document.getElementById('board');
+        const cell = boardElement.children[x * boardSize + y];
+        cell.innerHTML = '💥';  // Explosion emoji
+        cell.style.backgroundColor = '#f00'; // Red background for explosion
+        
         revealAllMines();
-        renderBoard();
+        renderBoard();  // Render the board after showing the explosion emoji
+        loseSound();
+
         return;
     }
 
@@ -161,6 +204,7 @@ function revealAllMines() {
             }
         }
     }
+    clearInterval(timerInterval);
 }
 
 function revealAdjacentCells(x, y) {
@@ -207,5 +251,26 @@ function checkWinCondition() {
         revealAllMines();
         renderBoard();
         document.body.style.backgroundColor = '#9CCC65';
+        winSound();
+        clearInterval(timerInterval);
     }
+}
+
+function getTime() {
+    var timer = document.getElementById('timer');
+    var d = new Date();
+    var hour = d.getHours();
+    var minute = d.getMinutes();
+    var second = d.getSeconds();
+    timer.textContent = hour + ":" + minute + ":" + second; 
+}
+
+function winSound() {
+    var audio = new Audio('./winsound.mp3');
+    audio.play();
+}
+
+function loseSound() {
+    var audio = new Audio('./losesound.mp3');
+    audio.play();
 }

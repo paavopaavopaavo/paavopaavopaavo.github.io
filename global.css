@@ -70,9 +70,11 @@ button:hover {
 }
 
 button:disabled:hover {
-    background-color: lightgray;
-    border: 1.25px solid lightgray;
-    color: white;
+    background-color: white;
+    border: 1.25px solid var(--gray);
+    color: lightgray;
+    border-radius: 10px;
+    cursor: default;
 }
 
 input {
@@ -131,7 +133,12 @@ code {
 }
 
 hr {
-    margin: 60px;
+    margin: 50px auto;
+    max-width: 900px;
+    background-color: var(--gray);
+    border: none;
+    height: 1px;
+    width: 85%;
 }
 
 .footer-icon {
