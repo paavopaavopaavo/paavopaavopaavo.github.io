@@ -30,8 +30,8 @@
   <h1>Minesweeper</h1> 
   <div id="hud">
     <p>
-      🚩 <span id="flagsRemaining">10</span>/<span id="numMines">10</span> / 
-      ⏱️ <span id="timer"></span>
+      🚩 <span id="flagsRemaining">10</span>/<span id="numMines">10</span> <span class="seperator">|</span> 
+      ⏱️ <span id="timer">-.-</span>
     </p>
   </div>
   <div>
@@ -44,7 +44,7 @@
   </div>
   <div id="board"></div>
   <button onclick="startGame()" id="startbutton">Start Game</button>
-  <button onclick="hint()" id="hintbutton" disabled>Hint</button>
+  <button onclick="hint()" id="hintbutton" disabled>Hint <span id="hintCounter">5</span>/5</button>
 
   <hr>
 

@@ -10,7 +10,7 @@ a {
   text-decoration: underline;
   text-underline-offset: 5px;
   text-decoration-color: rgba(128, 128, 128, 0);
-  transition: all .2s;
+  transition: all .2s; 
 }
 
 a:hover {
@@ -32,6 +32,7 @@ a:hover {
   border-radius: 5px;
   width: 40vw;
   box-shadow: 0px 0px 0px var(--light-gray);
+  color: black;
 }
 
 .game-image {

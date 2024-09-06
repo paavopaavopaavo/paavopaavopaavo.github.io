@@ -2,19 +2,24 @@ let boardSize = 8;
 let numMines = 10;
 let timerInterval;
 let seconds = 0;
+let hintsLeft = 5;
 
 function hint() {
-    if (!gameOver) {
+    if (!gameOver && hintsLeft > 0) {
         for (let i = 0; i < boardSize; i++) {
             for (let j = 0; j < boardSize; j++) {
                 if (board[i][j].isMine && !board[i][j].isRevealed) {
                     board[i][j].isRevealed = true;
                     renderBoard();
+                    hintsLeft -= 1;
+                    console.log('Hints left:', hintsLeft);
+                    document.getElementById('hintCounter').innerText = hintsLeft;
                     return;
                 }
             }
         }
     }
+
 }
 
 function setDifficulty() {
@@ -62,7 +67,9 @@ function startGame() {
     }, 100);
 
     document.getElementById('hintbutton').disabled = true;
-
+    hintsLeft = 5;
+    document.getElementById('hintCounter').innerText = hintsLeft;
+    console.log('Hints left:', hintsLeft);
 }
 
 function createEmptyBoard(size) {

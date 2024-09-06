@@ -7,9 +7,17 @@
 }
 
 .game-board {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ; /* Ensure cards fill the whole width */
-    gap: 10px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+#hud {
+  display: flex;
+  justify-content: center; 
+  font-size: 30px;
+  font-family: var(--monospace), monospace;
 }
 
 .card {
@@ -34,7 +42,7 @@
 
 .card.flipped img {
   transform: rotateY(0);
-  border: 1px solid #eee;
+  border: 1px solid var(--light-gray);
 }
 
 .card::before {
@@ -45,7 +53,7 @@
   background: url("./images/back.png") no-repeat center center;
   background-size: cover;
   border-radius: 10px;
-  border: 1px solid #eee;
+  border: 1px solid var(--light-gray);
   transition: transform 0.3s;
   transform: rotateY(0);
   backface-visibility: hidden;
@@ -59,9 +67,9 @@ button {
   width: 100px
 }
 
-@media (max-width: 750px) {
+@media (max-width: 700px) {
   .game-board {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(6, 1fr);
   }
 
   .card {
@@ -72,7 +80,7 @@ button {
 
 @media (max-width: 500px) {
   .game-board {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .card {

@@ -13,6 +13,8 @@ const images = [
   { name: 'whale', img: './images/whale.png' }
 ];
 
+let flips = 0;
+
 const gameBoard = document.getElementById('game-board');
 let firstCard = null;
 let secondCard = null;
@@ -34,6 +36,8 @@ function flipCard(card) {
   if (lockBoard) return;
   if (card === firstCard) return;
 
+  flips++;
+  document.getElementById('flips').textContent = flips;
   card.classList.add('flipped');
 
   if (!firstCard) {
@@ -47,16 +51,19 @@ function flipCard(card) {
   checkForMatch();
 }
 
+
 function checkForMatch() {
   const isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
   if (isMatch) {
-      disableCards();
+    if (document.querySelectorAll('.card:not(.flipped)').length === 0) {
+        document.body.style.backgroundColor = '#9CCC65';
+    }
+    disableCards();
   } else {
       unflipCards();
   }
 }
-
 function disableCards() {
   firstCard.removeEventListener('click', handleCardClick);
   secondCard.removeEventListener('click', handleCardClick);
@@ -73,6 +80,9 @@ function unflipCards() {
 
 function resetBoard() {
   [firstCard, secondCard, lockBoard] = [null, null, false];
+  document.body.style.backgroundColor = '#ffffff';
+  flips++;
+  document.getElementById('flips').textContent = flips;
 }
 
 function shuffle(array) {

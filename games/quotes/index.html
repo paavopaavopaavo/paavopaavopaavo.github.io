@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta property="og:title" content="Opposite">
+    <meta property="og:type" content="application">
+    <meta property="og:url" content="https://paavopaavopaavo.github.io/games/quotes">
+    <meta property="og:image" content="https://paavopaavopaavo.github.io/games/quotes/embedimage.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="450">
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
@@ -8,6 +16,7 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <ul class="navbar">
@@ -21,9 +30,15 @@
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
 
-    <div id="quote-container">
+
+
+    <span id="quote-loader"><i class="fa-solid fa-circle-notch fa-spin"></i> <span class="loading-text">Hold on!</span></span>
+    <fieldset id="quote-container" style="display: none;">
+        <legend id="author"></legend>
         <div id="quote"></div>
-    </div>
+    </fieldset>
+
+    <p>Quotes from <a href="https://en.wikiquote.org/">Wikiquotes</a>!</p>
 
     <footer>
         <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>

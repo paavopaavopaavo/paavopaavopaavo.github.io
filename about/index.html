@@ -22,23 +22,32 @@
 
     <div id="article-container">
         <div id="article">
-            <div id="socials-container">
-            <img src="./pfp.jpg"  id="profilepic" class="polaroid">
-                <p id="socials">🇫🇮 / 🎮 / 🎨</p>
-            </div> 
-            <div id="text">
+            <div id="image-container">
+                <img src="./pfp.png" id="profilepic" class=" pfp">
+            </div>
+            <div id="text-container">
                 <h1>paavopaavopaavo</h1>
                 <p id="description">
-                    Hiya! I'm Paavo. I do stupid stuff and get even stupider results. 
-                    On this site you can find<a href="https://paavopaavopaavo.github.io/about"> some of it</a> as 
-                    well as play some <a href="https://paavopaavopaavo.github.io/games">games</a>. Have a good day!
+                    Hiya! I'm Paavo! I do stupid stuff ranging from art to games and a lot more.
+                    I enjoy animatronics, art, dinosaurs, frogs and Godzilla to mention a few!<br>
                 </p>
             </div>
         </div>
     </div>
 
+
     <footer>
         <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
     </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var pfpElement = document.querySelector('.pfp');
+
+        var classes = ["polaroid", "frame"];
+        var randomClass = classes[Math.floor(Math.random() * classes.length)];
+
+        pfpElement.classList.add(randomClass);
+    });
+    </script>
 </body>
 </html>

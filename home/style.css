@@ -1,0 +1,15 @@
+@import url("/global.css");
+
+#quote {
+    color: darkseagreen;
+    font-size: 4vw;
+    margin-top: 15vw;
+    font-style: italic;
+}
+
+@media screen and (max-width: 750px) {
+    #quote {
+        font-size: 6vw;
+        font-weight: 500;
+    }
+}

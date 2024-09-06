@@ -122,27 +122,57 @@ var Wikiquote = (function() {
 }());
 
 var authors = [
-    "Aristotle", "Socrates", "Plato", "Kierkegaard", "Johann Georg Hamann", "Alhazen", "Hendy Adams"
+    "Steve Jobs",
+    "Albert Einstein",
+    "Martin Luther King Jr.",
+    "John F. Kennedy",
+    "Mahatma Gandhi",
+    "Nelson Mandela",
+    "Walt Disney",
+    "Mother Teresa",
+    "Leonardo da Vinci",
+    "Abraham Lincoln",
+    "Margaret Thatcher",
+    "Charles Darwin",
+    "Thomas Edison",
+    "George Washington",
+    "Benjamin Franklin",
+    "Isaac Newton",
+    "Galileo Galilei",
+    "Marie Curie",
+    "Leo Tolstoy",
+    "Jane Austen"
 ];
 
 var quoteText;
 var quoteAuthor;
 
 var setHtml = function(quote) {
-    $('#quote').html(
-        "<blockquote class='quote-text'>" + quote.quote + "</blockquote>" +
-        "<small class='author'> - " + quote.titles + "</small>"
-    );
+    $('#quote').html("<span class='quote-text'>" + quote.quote + "</span");
+    $('#author').text(quote.titles);
+    $('#quote-loader').hide();
+    $('#quote-container').show();
 };
 
 var getQuote = function() {
-    Wikiquote.getRandomQuote(authors[Math.floor(Math.random() * authors.length)], function (quote) {
-        quoteText = quote.quote;
-        quoteAuthor = quote.titles;
-        setHtml(quote);
-    }, function (e) {
-        console.error("Error fetching quote");
-    });
+    $('#quote-loader').show();
+    $('#quote-container').hide();
+    var quote = null;
+    var getNewQuote = function() {
+        Wikiquote.getRandomQuote(authors[Math.floor(Math.random() * authors.length)], function (newQuote) {
+            quote = newQuote;
+            if (quote.quote.length > 100 || quote.quote.trim().length === 0) {
+                getNewQuote();
+            } else {
+                quoteText = quote.quote;
+                quoteAuthor = quote.titles;
+                setHtml(quote);
+            }
+        }, function (e) {
+            console.error("Error fetching quote");
+        });
+    };
+    getNewQuote();
 };
 
 $(function() {

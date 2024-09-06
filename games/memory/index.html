@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:title" content="Minesweeper">
+    <meta property="og:title" content="Memory Match">
     <meta property="og:type" content="application">
-    <meta property="og:url" content="https://paavopaavopaavo.github.io/games/minesweeper">
-    <meta property="og:image" content="https://paavopaavopaavo.github.io/games/minesweeper/embedimage.png">
+    <meta property="og:url" content="https://paavopaavopaavo.github.io/games/memory">
+    <meta property="og:image" content="https://paavopaavopaavo.github.io/games/memory/embedimage.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="450">
   
     <meta charset="UTF-8">
-    <title>Memory - paavopaavopaavo</title>
+    <title>Memory Match - paavopaavopaavo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
@@ -27,6 +27,15 @@
         <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
+
+    <h1>Memory Match</h1>
+    <p>Match all 12 pairs of cards to win!
+        <div id="hud">
+            <p>
+              Flips: <span id="flips">0</span>
+            </p>
+          </div>
+    </p>
 
     <div class="game-container">
         <div id="game-board" class="game-board"></div>

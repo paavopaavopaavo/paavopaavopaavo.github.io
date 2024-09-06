@@ -1,22 +1,23 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+/* Importing Google Fonts and external CSS file */
 @import url("/global.css");
 
+/* Styling for the quote section */
 #quote {
-    font-size: xx-large;
-    font-family: 'Croissant One', Times;
-    font-weight: 100;
+    font: italic xx-large/1.5 'Playwrite CU', Times;
     width: 80vw;
+    max-width: 800px;
     margin: auto;
     text-align: center;
-    margin-top: 15vw;
-    font-style: italic;
 }
 
 .author {
-    margin: auto;
-    margin-top: 3vw;
+    font: normal x-large/1.5 Raleway, sans-serif;
     text-align: center;
-    font-size: x-large;
-    font-family: Raleway, sans-serif;
-    font-style: normal;
+}
+
+#quote-loader {
+    font-size: 2.5em;
+    margin: 20vh auto 0;
+    display: block;
+    text-align: center;
 }

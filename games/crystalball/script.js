@@ -111,11 +111,14 @@ const responses = [
     "..wtf?"
 ];
 
+let previousPrompt = "";
+
 function getInputText(inputText) {
     // Get the input value
     // var inputText = document.getElementById("question-input").value;
     // Set the input value to the paragraph
     document.getElementById("crystalball-answer").innerText = inputText;
+    previousPrompt = inputText;
 }
 
 function askQuestion() {
@@ -137,7 +140,7 @@ function getRandomItem() {
 
 
 function share() {
-    let questioninput = document.getElementById("question-input").value;
+    let questioninput = previousPrompt;
     let crystalballanswer = document.getElementById("crystalball-answer").innerText;
     let sharetext = `💬: ${questioninput}\n🔮: ${crystalballanswer}`;
     if (navigator.share) {
