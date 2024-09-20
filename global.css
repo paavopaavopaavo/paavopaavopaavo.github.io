@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+J:ital,wght@1,100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
     /* COLORS */
-
+    --website-theme-color: darkseagreen;
+    --website-theme-dark: seagreen;
     --light-gray: rgb(239, 239, 239);
     --gray: rgb(185, 185, 185);
     --dark-gray: rgb(30, 102, 84);
@@ -14,18 +15,19 @@
 
     /* FONTS */
 
-    --base: "Raleway";
-    --title: "Rubik Mono One";
-    --cursive: "Croissant One";
-    --monospace: "IBM Plex Mono";
+    --base: "Raleway", sans-serif;
+    --title: "Rubik Mono One", sans-serif;
+    --cursive: "Playwrite GB J", cursive;
+    --monospace: "IBM Plex Mono", monospace;
 }
 
 body {
     font-size: 24px;
-    font-family: Raleway, sans-serif;
+    font-family: var(--base), sans-serif;
     text-align: center;
     transition: background-color .5s ease-in-out;
     background-color: #ffffff;
+    margin: 0;
     background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23dfdce3' fill-opacity='.25' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
@@ -43,11 +45,17 @@ h2 {
     color: var(--colors-hard-gray);
 }
 
+h3 {
+    font-family: var(--title);
+    font-size: 1rem;
+    color: var(--colors-hard-gray);
+}
+
 button {
     background-color: white;
-    border: 1.25px solid var(--dark-gray);
+    border: 1.25px solid var(--website-theme-dark);
     color: var(--dark-gray);
-    font-family: Raleway, sans-serif;
+    font-family: var(--base), sans-serif;
     width: 11vw;
     height: 5vh;
     border-radius: 10px;
@@ -59,13 +67,13 @@ button {
 button:disabled {
     background-color: white;
     border: 1.25px solid var(--gray);
-    color: lightgray;
+    color: var(--light-gray);
     border-radius: 10px;
 }
   
 button:hover {
-    background-color: var(--dark-gray);
-    border: 1.25px solid var(--dark-gray);
+    background-color: var(--website-theme-dark);
+    border: 1.25px solid var(--website-theme-dark);
     color: white;
 }
 
@@ -81,9 +89,9 @@ input {
     margin: 5px;
     border: 1px solid lightgray;
     border-radius: 5px;
-    background: url("");
+    background: white;
     padding: 5px;
-    font-family: Raleway, sans-serif;
+    font-family: var(--base), sans-serif;
     transition: box-shadow .2s ease-in-out;
 }
 
@@ -91,21 +99,26 @@ input[type=color] {
     padding: 2px;
 }
 
+p {
+    padding: 20px;
+}
+
 a {
     transition: color .1s ease-in-out;
+    text-decoration: underline;
 }
 
 a:link {
-    color: darkseagreen;
+    color: var(--website-theme-color);
 }
 a:visited {
-    color: darkseagreen;
+    color: var(--website-theme-color)
 }
 a:hover {
-    color: seagreen;
+    color: var(--website-theme-dark)
 }
 a:active {
-    color: darkseagreen;
+    color: var(--website-theme-color)
 }
  
 .external-link {
@@ -121,6 +134,13 @@ kbd {
     border-radius: 3px;
     padding: 2px;
     box-shadow: 0px 5px var(--dark-gray);
+    cursor: pointer;
+    transition: box-shadow .2s ease-in-out, transform .2s ease-in-out;
+}
+
+kbd:hover {
+    box-shadow: 0px 0px var(--dark-gray);
+    transform: translateY(-2px);
 }
 
 code {
@@ -185,18 +205,14 @@ NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAV
     .navbar {
         list-style-type: none;
         margin: 0;
-        padding: 0;
+        padding-top: 10px;
         background-color: white;
         display: flex;
         justify-content: center;
         align-items: center; /* Center items vertically */
         transition: color 200ms;
-        width: 100%;
+        width: calc(100%-10px); /* Set width to 100% of parent container */
     }
-        
-    .navbar-link:hover {
-        color: var(--dark-gray);
-    } 
         
     .navbar-link {
         display: inline;
@@ -218,8 +234,7 @@ NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAVBAR -=- NAV
         font-size: medium;
         padding: 1rem 0;
         position: relative;
-        top: 47.5vh;
         bottom: 0;
         width: 100%;
-        margin-top: auto; /* Ensure footer stays at the bottom */
+        margin-top: 250px; /* Ensure footer stays at the bottom */
     }

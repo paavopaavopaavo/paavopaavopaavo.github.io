@@ -161,7 +161,7 @@ var getQuote = function() {
     var getNewQuote = function() {
         Wikiquote.getRandomQuote(authors[Math.floor(Math.random() * authors.length)], function (newQuote) {
             quote = newQuote;
-            if (quote.quote.length > 100 || quote.quote.trim().length === 0) {
+            if (quote.quote.length > 100 || quote.quote.trim().length === 2) {
                 getNewQuote();
             } else {
                 quoteText = quote.quote;

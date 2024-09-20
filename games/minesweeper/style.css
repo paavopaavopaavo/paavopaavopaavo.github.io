@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=var(--base):400,400i,700");
 @import url("/global.css");
 
 #daily {
@@ -69,7 +69,7 @@ button {
   border-radius: 6.5px;
   box-shadow: 0px 5px rgba(0, 0, 0, 0.191);
   background-color: #eee;
-  font-family: Raleway, sans-serif;
+  font-family: var(--base), sans-serif;
   margin: 0;
   padding: 0;
   font-size: 24px;
@@ -81,7 +81,7 @@ button {
 }
 
 a:link {
-  color: darkseagreen;
+  color: var(--website-theme-color);
 }
 
 #how-to-play-list {

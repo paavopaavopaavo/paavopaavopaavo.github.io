@@ -41,7 +41,7 @@ a:hover {
 }
 
 .game-desc {
-  background-color: var(--light-gray);
+  background-color: whitesmoke;
   padding: 15px;
   margin-top: -5px;
   border-radius: 0px 0px 5px 5px;

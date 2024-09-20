@@ -3,15 +3,16 @@
 
 /* Styling for the quote section */
 #quote {
-    font: italic xx-large/1.5 'Playwrite CU', Times;
+    font: italic xx-large/1.5 var(--cursive), Times;
     width: 80vw;
     max-width: 800px;
+    padding: 20px;
     margin: auto;
     text-align: center;
 }
 
 .author {
-    font: normal x-large/1.5 Raleway, sans-serif;
+    font: normal x-large/1.5 var(--base), sans-serif;
     text-align: center;
 }
 

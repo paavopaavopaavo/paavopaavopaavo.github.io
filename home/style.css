@@ -1,15 +1,63 @@
 @import url("/global.css");
 
-#quote {
-    color: darkseagreen;
-    font-size: 4vw;
-    margin-top: 15vw;
-    font-style: italic;
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
 }
 
-@media screen and (max-width: 750px) {
-    #quote {
-        font-size: 6vw;
-        font-weight: 500;
+#logo {
+    width: auto;
+    height: 60%;
+    object-fit: contain;
+    object-position: center;
+    margin-top: -20%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+#links {
+    color: var(--website-theme-color);
+    cursor: pointer;
+    list-style-type: none;
+    padding: 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    font-family: var(--title), monospace;
+    font-weight: 900;
+    font-size: 2em;
+}
+
+.link {
+    text-decoration: none;
+}
+
+@media screen and (min-width: 1050px) {
+    #container {
+        flex-direction: row;
+    }
+
+    #logo {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #logo {
+        height: 100vw;
+    }
+
+    #links {
+        font-size: 10vw;
     }
 }

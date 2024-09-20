@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:title" content="Games">
+    <meta property="og:title" content="Portfolio - Paavopaavopaavo">
     <meta property="og:type" content="application">
     <meta property="og:url" content="https://paavopaavopaavo.github.io/portfolio">
     <meta property="og:image" content="https://paavopaavopaavo.github.io/portfolio/embedimage.png">
@@ -15,6 +15,22 @@
     <title>Portfolio - Paavopaavopaavo</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener('load', function() {
+        // Select all image elements with the specified class
+        var imgElements = document.querySelectorAll('.polaroid');
+
+        // Loop through each image element and apply a random rotation
+        imgElements.forEach(function(imgElement) {
+            // Generate a random rotation angle between -2 and 2 degrees
+            var randomRotation = Math.random() * 8 - 2;
+
+            // Apply the rotation to the image element
+            imgElement.style.transform = 'rotate(' + randomRotation + 'deg)';
+        });
+        });
+
+    </script>
 </head>
 <body>
     <ul class="navbar">
@@ -37,52 +53,52 @@
 
 
     <div id="art-container">
-        <div class="small-art" id="tree">
+        <div id="embr_roses">
+            <img src="./artwork/embr_roses.jpeg" class="polaroid art-image">
+            <h2>Roses</h2>
+            <p class="art-desc">This and "Butterfly" are both some embroidery practice I did. The roses are surprisingly simple for something so pretty.</p>
+        </div>
+        <div id="embr_butterfly">
+            <img src="./artwork/embr_butterfly.jpg" class="polaroid art-image">
+            <h2>Butterfly</h2>
+            <p class="art-desc">This was meant to be a lemon. Kinda screwed up with that one.</p>
+        </div>
+        <div id="tree">
             <img src="./artwork/tree.jpg" class="art-image">
             <h2>Tree</h2>
             <p class="art-desc">Just a- just a tree. Looks like it'd be fun to climb. Also hid my initials there. Or did I?</p>
         </div>
-        <div class="small-art" id="lilja">
+        <div id="lilja">
             <img src="./artwork/lilja.png" class="art-image">
             <h2>Lilja</h2>
             <p class="art-desc">Portrait of my sister <i class="fa-regular fa-heart" style="color: mediumvioletred;"></i>. Went for a faceless look.</p>
         </div>
-        <div class="small-art" id="cmy">
+        <div id="cmy">
             <img src="./artwork/cmy.jpg" class="art-image">
             <h2>CMY</h2>
             <p class="art-desc">Tried to use cyan, magenta and yellow as in the CMY color model as the palette/inspiration.</p>
         </div>
-        <div class="small-art" id="lavalamp">
+        <div id="lavalamp">
             <img src="./artwork/lavalamp.png" class="art-image">
             <h2>Lavalamp</h2>
             <p class="art-desc">Classic art practice where you draw blobs and then make faces out of them. Skulls, bones and a pelvis. Can you spot yourself in there?</p>
         </div>
-        <div class="small-art" id="roses">
+        <div id="roses">
             <img src="./artwork/roses.jpg" class="art-image">
             <h2>Roses</h2>
             <p class="art-desc">Was looking for inspiration and some roses were on a vase. "Inspiration can strike anywhere!", right?</p>
         </div>
-        <div class="small-art" id="daffodils">
+        <div id="daffodils">
             <img src="./artwork/daffodils.jpg" class="art-image">
             <h2>Daffodils</h2>
             <p class="art-desc">Hey, skulls are hard! ...and daffodils pretty. (invasive, ha!)</p>
         </div>
-        <div class="small-art" id="ifeelnice">
+        <div id="ifeelnice">
             <img src="./artwork/ifeelnice.jpeg" class="art-image wide-image">
             <h2>I Feel Nice</h2>
             <p class="art-desc"><i>...like sugar and spice...</i> It's actually just salt and pepper shakes.</p>
         </div>
-        <div class="small-art" id="embr_roses">
-            <img src="./artwork/embr_roses.jpeg" class="art-image">
-            <h2>Roses</h2>
-            <p class="art-desc">This and "Butterfly" are both some embroidery practice I did. The roses are surprisingly simple for something so pretty.</p>
-        </div>
-        <div class="small-art" id="embr_butterfly">
-            <img src="./artwork/embr_butterfly.jpg" class="art-image">
-            <h2>Butterfly</h2>
-            <p class="art-desc">This was meant to be a lemon. Kinda screwed up with that one.</p>
-        </div>
-        <div class="small-art" id="selfportrait">
+        <div id="selfportrait">
             <img src="./artwork/selfportrait.png" class="art-image">
             <h2>Self portrait</h2>
             <p class="art-desc"><i>Who is this handsome young man..?</i> The search keeps going.</p>

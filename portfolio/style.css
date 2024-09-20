@@ -1,17 +1,8 @@
 @import url("/global.css");
 
 
-
-#start-text {
-	width: 80vw;
-	margin: auto;
-	margin-top: 50px;
-	margin-bottom: 120px;
-	max-width: 850px;
-}
-
 a {
-	color: darkseagreen;
+	color: var(--website-theme-color);
 	text-decoration: underline;
 	cursor: pointer;
 }
@@ -20,9 +11,9 @@ a {
 	display: inline-grid;
 	column-gap: 25px;
 	row-gap: 150px;
-	grid-template-columns: 1fr; 
+	grid-template-columns: 1fr;
 	width: 100%;
-	max-width: 1200px
+	max-width: 1200px;
 }
 
 .art {
@@ -38,6 +29,14 @@ a {
 	box-shadow: gray 15px 15px 12px;
 }
 
+.polaroid {
+	padding: 15px;
+	background-color: whitesmoke;
+	border: none;
+	box-shadow: gray 15px 15px 12px;
+	transition: transform 0.2s ease-in-out;
+}
+
 .wide-image {
 	width: 40vw !important;
 	max-width: 720px !important;
@@ -45,11 +44,34 @@ a {
 	max-height: 720px !important;
 }
 
+.art-cluster {
+	width: 50vw;
+	min-width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: auto;
+}
+
+.art-cluster-images {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 15px;
+}
+
+.cluster-image {
+	width: 15vw;
+	min-width: 180px;
+	height: auto;
+	border: 10px ridge #b56424;
+	box-shadow: gray 15px 15px 12px;
+}
+
 .art-desc {
 	width: 40vw;
 	max-width: 480px;
 	margin: auto;
-	min-width: 185px
+	min-width: 185px;
 }
 
 h2 {
@@ -57,12 +79,35 @@ h2 {
 	text-underline-offset: 12.5px;
 }
 
+.poem-container {
+	width: 800px;
+	max-width: 80vw;
+	margin: 50px auto;
+	align-items: center;
+}
+
+.poem {
+	white-space: pre-line;
+	background-color: white;
+	border: 1px solid black;
+	width: 70vw;
+	max-width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+}
+
+.poem-title {
+	text-decoration: underline;
+	text-underline-offset: 12.5px;
+	padding: 0;
+	margin: 0;
+}
 
 @media (max-width: 700px) {
 	#art-container {
-		grid-template-columns: 1fr; 
+		grid-template-columns: 1fr;
 	}
-	
+
 	.art-image {
 		width: auto;
 		max-width: 500px;
@@ -75,7 +120,11 @@ h2 {
 		max-width: 360px !important;
 		height: auto !important;
 		max-height: 320px !important;
-	
+	}
+
+	.art-cluster {
+		width: 80vw;
+		min-width: 200px;
 	}
 }
 
@@ -86,4 +135,7 @@ h2 {
 		margin: auto;
 	}
 
+	.art-cluster-images {
+		grid-template-columns: 1fr;
+	}
 }
