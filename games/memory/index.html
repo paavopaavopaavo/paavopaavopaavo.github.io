@@ -18,7 +18,7 @@
 </head>
 <body>
     <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link">
+        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
             <img id="homepage-link" src="/assets/paavopaavopaavo.png"
             onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
             onmouseout="this.src='/assets/paavopaavopaavo.png';">
@@ -29,13 +29,7 @@
     </ul>
 
     <h1>Memory Match</h1>
-    <p>Match all 12 pairs of cards to win!
-        <div id="hud">
-            <p>
-              Flips: <span id="flips">0</span>
-            </p>
-          </div>
-    </p>
+    <p>Match all 12 pairs of cards to win!</p>
 
     <div class="game-container">
         <div id="game-board" class="game-board"></div>
@@ -44,8 +38,9 @@
     <button onclick="restartGame()" type="button"><i class="fa-solid fa-arrows-rotate"></i> Restart</button>
 
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
+        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
     </footer>
     <script src="script.js"></script>
+    <script src="/global.js"></script>
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Portfolio - Paavopaavopaavo">
+    <meta property="og:type" content="application">
+    <meta property="og:url" content="https://paavopaavopaavo.github.io/portfolio">
+    <meta property="og:image" content="https://paavopaavopaavo.github.io/portfolio/embedimage.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="450">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <title>404 - Paavopaavopaavo</title>
+    <link rel="stylesheet" href="./home/style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>404</h1>
+    <p>It seems you've wandered off somewhere...<br>
+    Redirecting home in <span style="font-weight: bold;">9</span> seconds.</p>
+
+
+    <script>
+        let seconds = 9;
+        const countdownElement = document.querySelector('span');
+
+        function updateCountdown() {
+            countdownElement.textContent = seconds;
+            seconds--;
+        }
+
+        // Update the countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        // Redirect to the home page after 10 seconds
+        setTimeout(() => {
+            clearInterval(countdownInterval);
+            window.location.href = 'https://paavopaavopaavo.github.io/home'
+        }, 10000);
+    </script>
+    <script src="/global.js"></script>
+</body>
+</html>

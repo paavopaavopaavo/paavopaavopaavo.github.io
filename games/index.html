@@ -18,7 +18,7 @@
 </head>
 <body>
     <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link">
+        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
             <img id="homepage-link" src="/assets/paavopaavopaavo.png"
             onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
             onmouseout="this.src='/assets/paavopaavopaavo.png';">
@@ -52,7 +52,8 @@
     </div><br>
 
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
+        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
     </footer>
+    <script src="/global.js"></script>
 </body>
 </html>

@@ -1,5 +1,10 @@
 @import url("/global.css");
 
+body {
+    padding: 0;
+    margin: 0;
+}
+ 
 #container {
     display: flex;
     flex-direction: column;
@@ -11,17 +16,15 @@
     margin: 0;
 }
 
-#logo {
+#homepage-logo {
     width: auto;
     height: 60%;
     object-fit: contain;
     object-position: center;
-    margin-top: -20%;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
-    user-drag: none;
 }
 
 #links {
@@ -39,6 +42,7 @@
 }
 
 .link {
+    color: var(--website-theme-color);
     text-decoration: none;
 }
 

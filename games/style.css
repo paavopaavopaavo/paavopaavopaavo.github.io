@@ -33,6 +33,11 @@ a:hover {
   width: 40vw;
   box-shadow: 0px 0px 0px var(--light-gray);
   color: black;
+  transition: all .2s;
+}
+
+.game:hover {
+  border: var(--website-theme-color) 1px solid;
 }
 
 .game-image {
@@ -41,7 +46,7 @@ a:hover {
 }
 
 .game-desc {
-  background-color: whitesmoke;
+  background-color: var(--website-background-color);
   padding: 15px;
   margin-top: -5px;
   border-radius: 0px 0px 5px 5px;

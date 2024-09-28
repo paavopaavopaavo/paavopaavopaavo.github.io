@@ -34,17 +34,19 @@
   display: inline-grid;
   grid-template-columns: 1fr 4fr 1fr;
   min-height: 2rem;
+  width: max-content;
 }
 
 #send-question {
   cursor: pointer;
-  background-color: white;
+  background-color: var(--website-background-color);
   border-radius: 3px 10px 10px 3px;
+  width: max-content;
 }
 
 #question-input {
   cursor: text;
-  background-color: white;
+  background-color: var(--website-background-color);
   border-radius: 3px 3px 3px 3px;
   border: 1.25px solid var(--dark-gray);
   color: black;
@@ -56,7 +58,8 @@
 #share {
   cursor: pointer;
   border-radius: 10px 3px 3px 10px;
-  background-color: white;
+  background-color: var(--website-background-color);
+  width: max-content;
 }
 
 button:hover {

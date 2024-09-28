@@ -59,9 +59,9 @@ a {
 	gap: 15px;
 }
 
-.cluster-image {
-	width: 15vw;
-	min-width: 180px;
+.art-cluster-images .cluster-image {
+	width: 5vw;
+	min-width: 100px;
 	height: auto;
 	border: 10px ridge #b56424;
 	box-shadow: gray 15px 15px 12px;
@@ -88,7 +88,7 @@ h2 {
 
 .poem {
 	white-space: pre-line;
-	background-color: white;
+	background-color: var(--website-background-color);
 	border: 1px solid black;
 	width: 70vw;
 	max-width: 600px;

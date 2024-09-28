@@ -22,11 +22,11 @@
 }
 
 @keyframes scroll {
-    100% {
-      background-position: 0px -400%;
-    }
+  100% {
+    background-position: 0px -400%;
   }
-  
+}
+
 
 #earth_div1{right: 50%;}
 

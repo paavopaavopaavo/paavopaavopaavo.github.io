@@ -3,6 +3,18 @@ let numMines = 10;
 let timerInterval;
 let seconds = 0;
 let hintsLeft = 5;
+let audio_volume = 1;
+
+function toggleMute() {
+    const volumeButton = document.getElementById('muteButton');
+    if (audio_volume) {
+        audio_volume = 0;
+        volumeButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    } else {
+        audio_volume = 1;
+        volumeButton.innerHTML = '<i class="fas fa-volume-high"></i>';
+    }
+}
 
 function hint() {
     if (!gameOver && hintsLeft > 0) {
@@ -54,7 +66,7 @@ function startGame() {
     renderBoard();
     const startButtonElement = document.getElementById('startbutton');
     startButtonElement.textContent = "Restart Game";
-    document.body.style.backgroundColor = 'white';
+    document.body.style.backgroundColor = 'var(--website-background-color)';
 
     timerInterval = setInterval(function() {
         seconds += 0.1;
@@ -274,10 +286,12 @@ function getTime() {
 
 function winSound() {
     var audio = new Audio('./winsound.mp3');
+    audio.volume = audio_volume;
     audio.play();
 }
 
 function loseSound() {
     var audio = new Audio('./losesound.mp3');
+    audio.volume = audio_volume;
     audio.play();
 }

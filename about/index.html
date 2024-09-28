@@ -22,14 +22,15 @@
 
     <div id="article-container">
         <div id="article">
-            <div id="image-container">
-                <img src="./pfp.png" id="profilepic" class=" pfp">
+            <div id="image-container" onclick="togglePfp()">
+                <img src="./pfp.png" id="profilepic" class="frame pfp">
             </div>
             <div id="text-container">
-                <h1>paavopaavopaavo</h1>
+                <h1 id="title">paavopaavopaavo</h1>
                 <p id="description">
-                    Hiya! I'm Paavo! I do stupid stuff ranging from art to games and a lot more.
-                    I enjoy animatronics, art, dinosaurs, frogs and Godzilla to mention a few!<br>
+                    Heya! I'm Paavo. I'm into all sorts of things, from creating games to art and more. 
+                    I have a soft spot for animatronics, art, dinosaurs, frogs, and Godzilla!
+                    You can contact me on <a href="#" onclick="changeTitle('@paavo.paavo.paavo')"> Discord</a>.<br>
                 </p>
             </div>
         </div>
@@ -37,17 +38,33 @@
 
 
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
+        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
     </footer>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var pfpElement = document.querySelector('.pfp');
 
-        var classes = ["polaroid", "frame"];
-        var randomClass = classes[Math.floor(Math.random() * classes.length)];
 
-        pfpElement.classList.add(randomClass);
-    });
+        function changeTitle(newTitle) {
+            let titleElement = document.getElementById("title");
+            let currentTitle = titleElement.innerHTML;
+            let i = 0;
+            let interval = setInterval(function() {
+                let randomChar = String.fromCharCode(33 + Math.floor(Math.random() * 94));
+                titleElement.innerHTML = newTitle.substring(0, i) + randomChar + currentTitle.substring(i + 1);
+                if (i >= newTitle.length) {
+                    clearInterval(interval);
+                    titleElement.innerHTML = newTitle;
+                }
+                i++;
+            }, 75);
+        }
+
+        function togglePfp() {
+            var pfpElement = document.getElementById("profilepic");
+            pfpElement.classList.toggle("frame");
+            pfpElement.classList.toggle("polaroid");
+        }
+
     </script>
+    <script src="/global.js"></script>
 </body>
 </html>

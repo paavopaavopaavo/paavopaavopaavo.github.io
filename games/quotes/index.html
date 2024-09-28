@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
-    <title>Paavopaavopaavo</title>
+    <title>Quotes - Paavopaavopaavo</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js" defer></script>
@@ -20,7 +20,7 @@
 </head>
 <body>
     <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link">
+        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
             <img id="homepage-link" src="/assets/paavopaavopaavo.png"
             onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
             onmouseout="this.src='/assets/paavopaavopaavo.png';">
@@ -30,18 +30,22 @@
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
 
+    <h1>Quotes</h1>
+    <p>Just wait for the spinner to stop spinning and you'll get a random quote! It might take a couple seconds.
+    Quotes from <a href="https://en.wikiquote.org/" target="_blank">Wikiquotes <i class="fa-solid fa-up-right-from-square external-link"></i></a></p>
 
-
-    <span id="quote-loader"><i class="fa-solid fa-circle-notch fa-spin"></i> <span class="loading-text">Hold on!</span></span>
+    <span id="quote-loader"><i class="fa-solid fa-circle-notch fa-spin spinner"></i> <span class="loading-text">Hold on!</span></span>
     <fieldset id="quote-container" style="display: none;">
         <legend id="author"></legend>
         <div id="quote"></div>
     </fieldset>
-    
-    <p>Quotes from <a href="https://en.wikiquote.org/">Wikiquotes</a>!</p>
+    <button id="new-quote"><i class="fa-solid fa-arrows-rotate"></i> New Quote</button>
+    <button id="copy-quote"><i class="fa-regular fa-copy"></i> Copy Quote</button>
+    <button id="share-quote"><i class="fa-regular fa-share-from-square"></i> Share</button><br>
 
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
+        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
     </footer>
+    <script src="/global.js"></script>
 </body>
 </html>

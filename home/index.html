@@ -1,21 +1,49 @@
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <link rel="icon" href="/assets/favicon.png">
-    <title>Paavopaavopaavo</title>
+    <title>Home - Paavopaavopaavo</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div id="container">
-        <img src="./image.png" alt="Logo" id="logo">
+        <img src="./image.png" alt="Logo" id="homepage-logo">
         <ul id="links">
             <li><a href="/portfolio" class="link">Portfolio</a></li>
             <li><a href="/about" class="link">About</a></li>
             <li><a href="/games" class="link">Games</a></li>
         </ul>
     </div>
-    <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
-    </footer>
+    <script src="/global.js"></script>
+    <script>
+        let logo = document.getElementById("homepage-logo");
+
+        if (month === 10 && day >= 28) {
+
+            logo.src = "/assets/timed/halloween.png";
+            document.documentElement.style.setProperty('--website-theme-color', '#e24304');
+            document.documentElement.style.setProperty('--website-theme-dark', '#9a2b00');
+            document.body.style.backgroundColor = "black";
+        } else if (month === 12) {
+
+            logo.src = "/assets/timed/christmas.png";
+
+        // The navbar element's background changes to a repeating image
+            document.documentElement.style.setProperty('--website-theme-color', 'green');
+            document.documentElement.style.setProperty('--website-theme-dark', 'red');
+        } else if (month === 2 && day === 14) {
+            logo.src = "/assets/timed/valentines.png";
+
+            document.documentElement.style.setProperty('--website-theme-color', 'hotpink');
+            document.documentElement.style.setProperty('--website-theme-dark', 'pink');
+        } else if (month === 4 && day === 1) {
+            let homepageLink = document.getElementById("homepage-link");
+            homepageLink.href = "https://youtu.be/dQw4w9WgXcQ";
+            logo.src = "/assets/timed/aprilfools.png";
+        } else if (month === 4 && day === 2) {
+            logo.src = "/assets/timed/birthday.png";
+        }
+    </script>
 </body>
 </html>

@@ -80,8 +80,12 @@ button {
   color: var(--dark-gray);
 }
 
-a:link {
+a {
   color: var(--website-theme-color);
+}
+
+a:hover {
+  color: var(--website-theme-dark);
 }
 
 #how-to-play-list {

@@ -17,24 +17,19 @@
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
     <script>
         window.addEventListener('load', function() {
-        // Select all image elements with the specified class
-        var imgElements = document.querySelectorAll('.polaroid');
-
-        // Loop through each image element and apply a random rotation
-        imgElements.forEach(function(imgElement) {
-            // Generate a random rotation angle between -2 and 2 degrees
-            var randomRotation = Math.random() * 8 - 2;
-
-            // Apply the rotation to the image element
-            imgElement.style.transform = 'rotate(' + randomRotation + 'deg)';
+            var imgElements = document.querySelectorAll('.polaroid');
+            
+            imgElements.forEach(function(imgElement) {
+                var randomRotation = Math.random() * 6 - 2;
+                imgElement.style.transform = 'rotate(' + randomRotation + 'deg)';
+            });
         });
-        });
-
-    </script>
+        
+        </script>
 </head>
 <body>
     <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link">
+        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
             <img id="homepage-link" src="/assets/paavopaavopaavo.png"
             onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
             onmouseout="this.src='/assets/paavopaavopaavo.png';">
@@ -43,26 +38,16 @@
         <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
-
+    
     <p id="start-text">
         Hiya! This is my own little art gallery. 
         If you like my little paintings and what not, you can <a id="link-share" onclick="share()">share this website</a> for others to see! <br>
         This page is updated everytime there is new creative work.<pre>*    *    *</pre><br><br><br><br>
     </p>
-
-
-
+    
+    
+    
     <div id="art-container">
-        <div id="embr_roses">
-            <img src="./artwork/embr_roses.jpeg" class="polaroid art-image">
-            <h2>Roses</h2>
-            <p class="art-desc">This and "Butterfly" are both some embroidery practice I did. The roses are surprisingly simple for something so pretty.</p>
-        </div>
-        <div id="embr_butterfly">
-            <img src="./artwork/embr_butterfly.jpg" class="polaroid art-image">
-            <h2>Butterfly</h2>
-            <p class="art-desc">This was meant to be a lemon. Kinda screwed up with that one.</p>
-        </div>
         <div id="tree">
             <img src="./artwork/tree.jpg" class="art-image">
             <h2>Tree</h2>
@@ -98,33 +83,42 @@
             <h2>I Feel Nice</h2>
             <p class="art-desc"><i>...like sugar and spice...</i> It's actually just salt and pepper shakes.</p>
         </div>
+        <div class="art-cluster">
+            <div class="art-cluster-images">
+                <img src="./artwork/embr_roses.jpeg" class="polaroid art-image">
+                <img src="./artwork/embr_butterfly.jpg" class="polaroid art-image">
+            </div>
+            <h2>Roses / Butterfly</h2>
+            <p class="art-desc">This is some embroidery practice I did. I love the rose technique, but the butterfly was supposed to be a lemon. Screwed up.</p>
+        </div>
         <div id="selfportrait">
             <img src="./artwork/selfportrait.png" class="art-image">
             <h2>Self portrait</h2>
             <p class="art-desc"><i>Who is this handsome young man..?</i> The search keeps going.</p>
         </div>
     </div>
-
+    
     <p id="start-text">
         <i>"Why so many skulls?"</i> Skulls are a geometrically complex shape that can easily be recognized. What does that say about me? Who knows.
         <br> 
     </p>
-
+    
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
+        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
     </footer>
-
+    
     <script>
         function share() {
             if (navigator.share) {
                 navigator.share({
                     url: 'https://paavopaavopaavo.github.io/portfolio',
                 })
-                    .then(() => console.log('Successful share'))
-                    .catch((error) => console.log('Error sharing', error));
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
             }
         }
         window.share = share;
     </script>
+    <script src="/global.js"></script>
 </body>
 </html>

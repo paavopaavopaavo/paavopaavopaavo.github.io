@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Preview - paavopaavopaavo</title>
-    <link rel="stylesheet" href="./home/style.css">
+    <link rel="stylesheet" href="/global.css">
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link">
+        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
             <img id="homepage-link" src="/assets/paavopaavopaavo.png"
             onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
             onmouseout="this.src='/assets/paavopaavopaavo.png';">
@@ -19,8 +19,7 @@
         <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
     </ul>
 
-    <button>I'm a button!</button><br>
-    <button disabled>I'm tired.</button><br>
+    <button>I'm a button!</button><button disabled>I'm a disabled button.</button><br>
     <input placeholder="Text input!"><br>
     <input type="color"><br>
     <a href="#">I'm a link. Click me!</a><br>
@@ -31,13 +30,18 @@
     <h2>Title! (h2)</h2>
     And then some more text.
     <h3>Title! (h3) (much wow)</h3>
-    More text for previewing!<br>.
+    More text for previewing!<br>
 <br>
     This is an inline code preview <code>testFunction()</code> blah blah blah<br><br>
-    <hr> divider!<br><br>
-    <p>Regular font. blah.</p>
-    <p style="font-family: var(--cursive);">Cursive font!</p>
-    <p style="font-family: var(--monospace);">Monospace. Beep Boop.</p>
-    <p style="font-family: var(--title);">Title! Hulk Smash!</p>
+    <hr> divider!<br>
+    <p>Regular font. blah. <br>
+        <span style="font-family: var(--cursive), cursive">Cursive Font!</span><br>
+        <span style="font-family: var(--monospace), monospace">Monospace font. Beep boop.</span><br>
+        <span style="font-family: var(--title)">Title font! Hulk! Smash!</span><br>
+    </p>
+    <footer>
+        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+    </footer>
+    <script src="/global.js"></script>
 </body>
 </html>

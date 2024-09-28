@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas - paavopaavopaavo</title>
+    <link rel="stylesheet" href="/global.css">
+    <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: black;
+            background-image: none;
+        }
+
+        #image-container {
+            width: auto;
+            height: 100vh;
+            /* Center items vertically */
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            /* Fit on screen */
+            width: 100%;
+            height: 100%;
+            /* Center image */
+            display: block;
+            margin: auto;
+            height: auto;
+        }
+
+        #content {
+            /* Center items vertically */
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <ul class="navbar">
+        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
+            <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+            onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+            onmouseout="this.src='/assets/paavopaavopaavo.png';">
+        </a></li>
+        <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+        <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+        <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+    </ul>
+    
+    <div id="content">
+        <div id="image-container"><img src="https://media1.tenor.com/m/3H_st0qOVwoAAAAd/tucan-funny.gif"></div><br><br>
+        <!-- ./xmas.webm-->
+        <div>
+            <button onclick="toggleMute()" id="muteButton"><i class="fa-solid fa-volume-high"></i></button>
+            <button onclick="toggleFullscreen()" id="fullscreenButton"><i class="fa-solid fa-expand"></i></button>
+        </div>
+        <audio id="audio" src="" autoplay loop></audio>
+    </div>
+
+
+
+
+    
+    <script>
+        let audio_volume = 1;
+        let is_fullscreen = false;
+
+        function toggleMute() {
+            const volumeButton = document.getElementById('muteButton');
+            if (audio_volume) {
+                audio_volume = 0;
+                volumeButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            } else {
+                audio_volume = 1;
+                volumeButton.innerHTML = '<i class="fas fa-volume-high"></i>';
+            }
+        }
+
+        function toggleFullscreen() {
+            const fullscreenButton = document.getElementById('fullscreenButton');
+
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+
+            function isFullscreen() {
+                return document.fullscreenElement !== null;
+            }
+
+            if (isFullscreen()) {
+                fullscreenButton.innerHTML = '<i class="fas fa-expand"></i>';
+            } else {
+                fullscreenButton.innerHTML = '<i class="fas fa-compress"></i>';
+            }
+        }
+
+        document.addEventListener("fullscreenchange", function() {
+            const fullscreenButton = document.getElementById('fullscreenButton');
+            if (document.fullscreenElement) {
+                fullscreenButton.innerHTML = '<i class="fas fa-compress"></i>';
+            } else {
+                fullscreenButton.innerHTML = '<i class="fas fa-expand"></i>';
+            }
+        });
+    </script>
+    <script src="/global.js"></script>
+</body>
+</html>

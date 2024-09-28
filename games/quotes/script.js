@@ -1,3 +1,40 @@
+var authors = [
+    "Albert Einstein",
+    "Martin Luther King Jr.",
+    "Mahatma Gandhi",
+    "Nelson Mandela",
+    "Mother Teresa",
+    "Leonardo da Vinci",
+    "Abraham Lincoln",
+    "Margaret Thatcher",
+    "Charles Darwin",
+    "Thomas Edison",
+    "Isaac Newton",
+    "Galileo Galilei",
+    "Marie Curie",
+    "Leo Tolstoy",
+    "Jane Austen",
+    "Stephen Hawking",
+    "Bill Gates",
+    "Eleanor Roosevelt",
+    "Mark Twain",
+    "Oscar Wilde",
+    "J.R.R. Tolkien",
+    "Edgar Allan Poe",
+    "Maya Angelou",
+    "Toni Morrison",
+    "Chinua Achebe",
+    "Haruki Murakami",
+    "Gabriel García Márquez",
+    "Arundhati Roy",
+    "Chimamanda Ngozi Adichie",
+    "Salman Rushdie",
+    "Ai Weiwei",
+    "Malala Yousafzai",
+    "Tove Jansson",
+    "Mika Waltari"
+];
+
 var Wikiquote = (function() {
     var wqa = {};
     var API_URL = "https://en.wikiquote.org/w/api.php";
@@ -121,29 +158,6 @@ var Wikiquote = (function() {
     return wqa;
 }());
 
-var authors = [
-    "Steve Jobs",
-    "Albert Einstein",
-    "Martin Luther King Jr.",
-    "John F. Kennedy",
-    "Mahatma Gandhi",
-    "Nelson Mandela",
-    "Walt Disney",
-    "Mother Teresa",
-    "Leonardo da Vinci",
-    "Abraham Lincoln",
-    "Margaret Thatcher",
-    "Charles Darwin",
-    "Thomas Edison",
-    "George Washington",
-    "Benjamin Franklin",
-    "Isaac Newton",
-    "Galileo Galilei",
-    "Marie Curie",
-    "Leo Tolstoy",
-    "Jane Austen"
-];
-
 var quoteText;
 var quoteAuthor;
 
@@ -157,25 +171,60 @@ var setHtml = function(quote) {
 var getQuote = function() {
     $('#quote-loader').show();
     $('#quote-container').hide();
+    // const quoteBox = document.getElementById('quote');
     var quote = null;
     var getNewQuote = function() {
         Wikiquote.getRandomQuote(authors[Math.floor(Math.random() * authors.length)], function (newQuote) {
-            quote = newQuote;
-            if (quote.quote.length > 100 || quote.quote.trim().length === 2) {
-                getNewQuote();
+            if (newQuote.quote.length < 130 && newQuote.quote.length > 2 && /[a-zA-Z]{3}/.test(newQuote.quote)) {
+                quoteText = newQuote.quote;
+                quoteAuthor = newQuote.titles;
+                setHtml(newQuote);
             } else {
-                quoteText = quote.quote;
-                quoteAuthor = quote.titles;
-                setHtml(quote);
+                // quoteText = newQuote.quote;
+                // quoteAuthor = newQuote.titles;
+                // setHtml(newQuote);
+                getNewQuote();
             }
         }, function (e) {
             console.error("Error fetching quote");
         });
     };
-    getNewQuote();
+        getNewQuote();
 };
 
 $(function() {
     getQuote();
     $('#new-quote').on('click', getQuote);
+});
+
+$('#share-quote').on('click', function() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Quotes - paavopaavopaavo',
+            text: quoteText + ' - ' + quoteAuthor,
+        }).then(function() {
+            console.log('Shared successfully');
+        }).catch(function(error) {
+            console.error('Error sharing:', error);
+        });
+    } else {
+        // Fallback option
+        alert('Sharing is not supported in this browser. Please copy the quote manually.');
+    }
+});
+
+// Add event listener for the "copy" button
+document.getElementById('copy-quote').addEventListener('click', function() {
+    document.getElementById('copy-quote').innerHTML = '<i class="fa-regular fa-copy"></i> Copied!';
+    var quoteText = document.querySelector('.quote-text').innerText;
+    var quoteAuthor = document.getElementById('author').innerText;
+    var quote = quoteText + ' - ' + quoteAuthor;
+    // Copy the quote to the clipboard
+    navigator.clipboard.writeText(quote).then(function() {
+        console.log('Quote copied to clipboard');
+    }).catch(function(error) {
+        console.error('Error copying quote:', error);
+        // Fallback option
+        alert('Copying to clipboard is not supported in this browser. Please copy the quote manually.');
+    });
 });

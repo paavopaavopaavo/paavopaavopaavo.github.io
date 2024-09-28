@@ -11,7 +11,8 @@
 
   <meta charset="UTF-8">
   <title>Minesweeper - paavopaavopaavo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
   <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
   <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
@@ -45,19 +46,21 @@
   <div id="board"></div>
   <button onclick="startGame()" id="startbutton">Start Game</button>
   <button onclick="hint()" id="hintbutton" disabled>Hint <span id="hintCounter">5</span>/5</button>
-
-  <hr>
+  <button onclick="toggleMute()" id="muteButton"><i class="fa-solid fa-volume-high"></i></button>
 
   <h2 id="how-to-play">How to play</h2>
   <ul id="how-to-play-list">
     <li class="instructions-item">Numbers on the grid indicate nearby mines.</li>
     <li class="instructions-item">Right-click to flag suspected mines.</li>
-    <li class="instructions-item">Left-click to reveal safe squares</li>
-    <li class="instructions-item">Clear all non-mined squares to win</li>
+    <li class="instructions-item">Left-click to reveal safe squares.</li>
+    <li class="instructions-item">Click a mine to lose.</li>
+    <li class="instructions-item">Clear all non-mined squares to win.</li>
+    <li class="instructions-item">Use the hint button to reveal a safe square.</li>
   </ul>
   <footer>
-    <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace"></i></p>
+    <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
   </footer>
   <script  src="./script.js"></script>
+  <script src="/global.js"></script>
 </body>
 </html>

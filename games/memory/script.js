@@ -13,8 +13,6 @@ const images = [
   { name: 'whale', img: './images/whale.png' }
 ];
 
-let flips = 0;
-
 const gameBoard = document.getElementById('game-board');
 let firstCard = null;
 let secondCard = null;
@@ -35,10 +33,6 @@ function createCard(image) {
 function flipCard(card) {
   if (lockBoard) return;
   if (card === firstCard) return;
-
-  flips++;
-  document.getElementById('flips').textContent = flips;
-  card.classList.add('flipped');
 
   if (!firstCard) {
       firstCard = card;
@@ -81,8 +75,6 @@ function unflipCards() {
 function resetBoard() {
   [firstCard, secondCard, lockBoard] = [null, null, false];
   document.body.style.backgroundColor = '#ffffff';
-  flips++;
-  document.getElementById('flips').textContent = flips;
 }
 
 function shuffle(array) {

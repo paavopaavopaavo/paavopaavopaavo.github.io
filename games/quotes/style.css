@@ -11,8 +11,13 @@
     text-align: center;
 }
 
-.author {
-    font: normal x-large/1.5 var(--base), sans-serif;
+#quote-container {
+    margin: 50px auto;
+}
+
+#author {
+    font: 2rem var(--base), sans-serif;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -21,4 +26,13 @@
     margin: 20vh auto 0;
     display: block;
     text-align: center;
+}
+
+.spinner {
+    font-size: 0.75em;
+    margin: 0 10px;
+}
+
+button {
+    margin: 20px auto;
 }
