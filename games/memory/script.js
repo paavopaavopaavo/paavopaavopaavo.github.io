@@ -33,7 +33,7 @@ function createCard(image) {
 function flipCard(card) {
   if (lockBoard) return;
   if (card === firstCard) return;
-
+  card.classList.add('flipped');
   if (!firstCard) {
       firstCard = card;
       return;
