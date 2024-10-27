@@ -41,8 +41,17 @@
       <option value="easy">Small (8x8, 10 mines)</option>
       <option value="medium">Medium (12x12, 15 mines)</option>
       <option value="hard">Large (15x15, 20 mines)</option>
+      <option value="custom">Custom 🆕</option>
     </select>
+    <div id="custom-settings" style="display: none;">
+      <label for="custom-size">Size:</label>
+      <input type="number" id="custom-size" min="5" max="15" value="10" onchange="checkCustomSettings()">
+      <label for="custom-mines">Mines:</label>
+      <input type="number" id="custom-mines" min="1" value="20" onchange="checkCustomSettings()">
+      <button onclick="applyCustomSettings()">Apply</button>
+    </div>
   </div>
+
   <div id="board"></div>
   <button onclick="startGame()" id="startbutton">Start Game</button>
   <button onclick="hint()" id="hintbutton" disabled>Hint <span id="hintCounter">5</span>/5</button>
@@ -58,7 +67,10 @@
     <li class="instructions-item">Use the hint button to reveal a safe square.</li>
   </ul>
   <footer>
-    <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+    <footer>
+        <p id="footer-text">© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <span onclick="sharePage()"><a href="">Share this page</a></span> | <span><a href="https://buymeacoffee.com/paavopaavopaavo"> Buy me a coffee</a></span>
+    </footer>
   </footer>
   <script  src="./script.js"></script>
   <script src="/global.js"></script>

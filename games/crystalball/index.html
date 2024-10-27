@@ -17,19 +17,21 @@
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
-            <img id="homepage-link" src="/assets/paavopaavopaavo.png"
-            onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
-            onmouseout="this.src='/assets/paavopaavopaavo.png';">
-        </a></li>
-        <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
-    </ul>
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://paavopaavopaavo.github.io/home" class="navbar-link" id="homepage-link-container">
+                <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+                onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+                onmouseout="this.src='/assets/paavopaavopaavo.png';">
+            </a></li>
+            <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+        </ul>
+    </nav>
 
     <h1>Crystalball</h1>
-    Ask a question, and the magical crystalball will answer them with a 10<span class="flash">0</span>% accuracy! 
+    <p>Ask a question, and the magical crystalball will answer them with a 10<span class="flash">0</span>% accuracy!</p>
 
     <div id="crystalball"><p id="crystalball-answer"></p></div>
     <div id="button-container">
@@ -38,7 +40,8 @@
         <button type="button" id="send-question" onclick="askQuestion()"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <span onclick="sharePage()"><a href="">Share this page</a></span>
     </footer>
     <script src="script.js"></script>
     <script src="/global.js"></script>

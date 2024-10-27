@@ -38,11 +38,13 @@
   transition: transform 0.3s;
   transform: rotateY(180deg);
   backface-visibility: hidden;
+  box-shadow: rgb(208, 208, 208) 5px 5px 20px;
 }
 
 .card.flipped img {
   transform: rotateY(0);
   border: 1px solid var(--light-gray);
+  
 }
 
 .card::before {
@@ -57,6 +59,7 @@
   transition: transform 0.3s;
   transform: rotateY(0);
   backface-visibility: hidden;
+  box-shadow: rgb(208, 208, 208) 5px 5px 20px;
 }
 
 .card.flipped::before {

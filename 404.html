@@ -26,6 +26,11 @@
             padding: 0;
         }
 
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
         h1 {
             font-size: 2em;
             margin: 0;
@@ -36,8 +41,8 @@
 </head>
 <body>
     <h1>404</h1>
-    <p>It seems you've wandered off somewhere...<br>
-    Redirecting home in <span style="font-weight: bold;">9</span> seconds.</p>
+    <p>It seems you've wandered off somewhere...
+    <p id="redirecting">Redirecting home in <span style="font-weight: bold;">9</span> seconds.</p></p>
 
 
     <script>
@@ -45,17 +50,21 @@
         const countdownElement = document.querySelector('span');
 
         function updateCountdown() {
-            countdownElement.textContent = seconds;
-            seconds--;
-        }
-
-        // Update the countdown every second
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        // Redirect to the home page after 10 seconds
-        setTimeout(() => {
+        countdownElement.textContent = seconds;
+        seconds--;
+        if (seconds < 0) {
             clearInterval(countdownInterval);
-            window.location.href = 'https://paavopaavopaavo.github.io/home'
-        }, 10000);
+            document.getElementById('redirecting').innerHTML = 'Redirecting home...';
+            window.location.href = 'https://paavopaavopaavo.github.io/home';
+        }
+    }
+
+    // Update the countdown immediately
+    updateCountdown();
+
+    // Update the countdown every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+</script>
     </script>
     <script src="/global.js"></script>
 </body>

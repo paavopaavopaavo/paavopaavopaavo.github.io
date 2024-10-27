@@ -12,6 +12,8 @@ body {
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    max-width: 100vw;
+    max-height: 100vh;
     padding: 0;
     margin: 0;
 }
@@ -25,6 +27,10 @@ body {
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
+    max-width: 90vw;
+    max-height: 90vh;
+    padding: 0;
+    margin: 0;
 }
 
 #links {
@@ -43,7 +49,7 @@ body {
 
 .link {
     color: var(--website-theme-color);
-    text-decoration: none;
+    text-underline-offset: 0.15em;
 }
 
 @media screen and (min-width: 1050px) {

@@ -7,6 +7,11 @@
     <title>About - paavopaavopaavo</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+    <script>
+        var classes = ["frame", "polaroid"];
+        var randomIndex = Math.floor(Math.random() * classes.length);
+        var randomClass = classes[randomIndex];
+    </script>
 </head>
 <body>
     <ul class="navbar">
@@ -23,7 +28,9 @@
     <div id="article-container">
         <div id="article">
             <div id="image-container" onclick="togglePfp()">
-                <img src="./pfp.png" id="profilepic" class="frame pfp">
+                <script>
+                    document.write('<img src="./pfp.png" id="profilepic" class="pfp ' + randomClass + '">');
+                </script>
             </div>
             <div id="text-container">
                 <h1 id="title">paavopaavopaavo</h1>
@@ -36,13 +43,34 @@
         </div>
     </div>
 
+    <div id="down-arrow">
+        <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+    <div id="about-website" class="section">
+        <h2>About this website</h2>
+        <p>
+            This simple static website is built primarily by me using HTML, CSS, and JavaScript, with some help from <a href="https://developer.mozilla.org/en-US/">MDN <i class="fa-solid fa-up-right-from-square external-link"></i></a> and AI assistance.
+            It has icons from <a href="https://fontawesome.com/">Font Awesome <i class="fa-solid fa-up-right-from-square external-link"></i></a> and fonts from <a href="https://fonts.google.com/">Google Fonts <i class="fa-solid fa-up-right-from-square external-link"></i></a>. 
+            There are several easter eggs and interactive things on every page, plus more during events like Halloween and Christmas!
+        </p>
+    </div>
+
+    <!--
+    <div id="donating" class="section">
+        <h2>Donating</h2>
+        <p>
+            If you'd like to support me, you can do so by <a href="https://buymeacoffee.com/paavopaavopaavo">buying me a pizza</a>!
+            It helps support my art interests and keeps me motivated to create more content :D
+        </p>
+    </div>
+    -->
 
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <span onclick="sharePage()"><a href="">Share this page</a></span>
     </footer>
     <script>
-
-
         function changeTitle(newTitle) {
             let titleElement = document.getElementById("title");
             let currentTitle = titleElement.innerHTML;
@@ -64,6 +92,30 @@
             pfpElement.classList.toggle("polaroid");
         }
 
+        const targetElement = document.getElementById('about-website');
+        const toggleElement = document.getElementById('down-arrow');
+
+        const observerOptions = {
+            root: null,
+            threshold: 0
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                toggleElement.style.opacity = '0';
+                } else {
+                toggleElement.style.opacity = '1';
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        observer.observe(targetElement);
+
+        document.getElementById('down-arrow').addEventListener('click', function() {
+            document.getElementById('about-website').scrollIntoView({ behavior: 'smooth' });
+        });
     </script>
     <script src="/global.js"></script>
 </body>

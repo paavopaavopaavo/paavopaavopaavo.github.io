@@ -1,9 +1,63 @@
 let boardSize = 8;
 let numMines = 10;
-let timerInterval;
+let timerInterval = null;
 let seconds = 0;
 let hintsLeft = 5;
 let audio_volume = 1;
+let board = [];
+let firstClick = true;
+let flagsRemaining = numMines;
+let numStartMines = numMines;
+let gameOver = false;
+
+// Get URL parameters and initialize the game
+getURLParams();
+startGame();
+
+function getURLParams() {
+    const params = new URLSearchParams(window.location.search);
+    const sizeParam = params.get('size');
+    const minesParam = params.get('mines');
+    if (sizeParam) {
+        boardSize = parseInt(sizeParam, 10);
+    }
+    if (minesParam) {
+        numMines = parseInt(minesParam, 10);
+    }
+}
+
+function updateURLParams() {
+    const params = new URLSearchParams(window.location.search);
+    params.set('size', boardSize);
+    params.set('mines', numMines);
+    const newUrl = window.location.pathname + '?' + params.toString();
+    window.history.replaceState({}, '', newUrl);
+}
+
+function checkCustomSettings() {
+    // If number input's value is more or less than max/min (respectively), set it to max/min
+    const sizeInput = document.getElementById('custom-size');
+    const minesInput = document.getElementById('custom-mines');
+    const maxSize = 20;
+    const minSize = 5;
+    const maxMines = 99;
+    const minMines = 1;
+    if (sizeInput.value > maxSize) {
+        sizeInput.value = maxSize;
+    } else if (sizeInput.value < minSize) {
+        sizeInput.value = minSize;
+    }
+    if (minesInput.value > maxMines) {
+        minesInput.value = maxMines;
+    } else if (minesInput.value < minMines) {
+        minesInput.value = minMines;
+    }
+    // If number of mines is more than total cells, set it to total cells - 1
+    const totalCells = sizeInput.value * sizeInput.value;
+    if (minesInput.value >= totalCells) {
+        minesInput.value = totalCells - 1;
+    }
+}
 
 function toggleMute() {
     const volumeButton = document.getElementById('muteButton');
@@ -20,8 +74,11 @@ function hint() {
     if (!gameOver && hintsLeft > 0) {
         for (let i = 0; i < boardSize; i++) {
             for (let j = 0; j < boardSize; j++) {
-                if (board[i][j].isMine && !board[i][j].isRevealed) {
+                if (!board[i][j].isMine && !board[i][j].isRevealed) {
                     board[i][j].isRevealed = true;
+                    if (board[i][j].neighborMines === 0) {
+                        revealAdjacentCells(i, j);
+                    }
                     renderBoard();
                     hintsLeft -= 1;
                     console.log('Hints left:', hintsLeft);
@@ -31,26 +88,79 @@ function hint() {
             }
         }
     }
-
 }
 
 function setDifficulty() {
     const difficulty = document.getElementById('difficulty').value;
-    switch(difficulty) {
-        case 'easy':
-            boardSize = 8;
-            numMines = 10;
-            break;
-        case 'medium':
-            boardSize = 12;
-            numMines = 15;
-            break;
-        case 'hard':
-            boardSize = 15;
-            numMines = 20;
-            break;
+    if (difficulty === 'custom') {
+        showCustomSettings();
+    } else {
+        hideCustomSettings();
+        switch(difficulty) {
+            case 'easy':
+                boardSize = 8;
+                numMines = 10;
+                break;
+            case 'medium':
+                boardSize = 12;
+                numMines = 15;
+                break;
+            case 'hard':
+                boardSize = 15;
+                numMines = 20;
+                break;
+        }
+        updateURLParams();
+        startGame();
     }
+    updateURLParams();
+}
+
+function showCustomSettings() {
+    document.getElementById('custom-settings').style.display = 'block';
+}
+
+function hideCustomSettings() {
+    document.getElementById('custom-settings').style.display = 'none';
+}
+
+function applyCustomSettings() {
+    const sizeInput = document.getElementById('custom-size');
+    const minesInput = document.getElementById('custom-mines');
+    boardSize = parseInt(sizeInput.value, 10);
+    numMines = parseInt(minesInput.value, 10);
+    if (numMines >= boardSize * boardSize) {
+        alert("Number of mines must be less than total cells.");
+        numMines = boardSize * boardSize - 1;
+        minesInput.value = numMines;
+    }
+    updateURLParams();
     startGame();
+}
+
+function checkCustomSettings() {
+    // If number input's value is more or less than max/min (respectively), set it to max/min
+    const sizeInput = document.getElementById('custom-size');
+    const minesInput = document.getElementById('custom-mines');
+    const maxSize = 15;
+    const minSize = 5;
+    const maxMines = 20;
+    const minMines = 1;
+    if (sizeInput.value > maxSize) {
+        sizeInput.value = maxSize;
+    } else if (sizeInput.value < minSize) {
+        sizeInput.value = minSize;
+    }
+    if (minesInput.value > maxMines) {
+        minesInput.value = maxMines;
+    } else if (minesInput.value < minMines) {
+        minesInput.value = minMines;
+    }
+    // If number of mines is more than total cells, set it to total cells - 1
+    const totalCells = sizeInput.value * sizeInput.value;
+    if (minesInput.value >= totalCells) {
+        minesInput.value = totalCells - 1;
+    }
 }
 
 function startGame() {
@@ -68,20 +178,37 @@ function startGame() {
     startButtonElement.textContent = "Restart Game";
     document.body.style.backgroundColor = 'var(--website-background-color)';
 
+    updateDifficultyDropdown();
+
     timerInterval = setInterval(function() {
         seconds += 0.1;
         seconds = Math.round(seconds * 10) / 10;
-        if (Math.floor(seconds) === seconds) {
-            document.getElementById('timer').textContent = seconds + ".0";
-        } else {
-            document.getElementById('timer').textContent = seconds;
-        }
+        document.getElementById('timer').textContent = seconds.toFixed(1);
     }, 100);
 
     document.getElementById('hintbutton').disabled = true;
     hintsLeft = 5;
     document.getElementById('hintCounter').innerText = hintsLeft;
     console.log('Hints left:', hintsLeft);
+}
+
+function updateDifficultyDropdown() {
+    const difficultyDropdown = document.getElementById('difficulty');
+    if (boardSize === 8 && numMines === 10) {
+        difficultyDropdown.value = 'easy';
+        hideCustomSettings();
+    } else if (boardSize === 12 && numMines === 15) {
+        difficultyDropdown.value = 'medium';
+        hideCustomSettings();
+    } else if (boardSize === 15 && numMines === 20) {
+        difficultyDropdown.value = 'hard';
+        hideCustomSettings();
+    } else {
+        difficultyDropdown.value = 'custom';
+        showCustomSettings();
+        document.getElementById('custom-size').value = boardSize;
+        document.getElementById('custom-mines').value = numMines;
+    }
 }
 
 function createEmptyBoard(size) {
@@ -136,7 +263,7 @@ function calculateNeighborMines(board) {
 
 function renderBoard() {
     const boardElement = document.getElementById('board');
-    boardElement.innerHTML = '';
+    boardElement.innerHTML = ' ';
     boardElement.style.gridTemplateColumns = `repeat(${boardSize}, 40px)`;
     for (let i = 0; i < boardSize; i++) {
         for (let j = 0; j < boardSize; j++) {
@@ -152,13 +279,14 @@ function renderBoard() {
                         cell.style.backgroundColor = '#C0C9C9'; // Single color for 1-8 mines
                     } else {
                         cell.style.backgroundColor = '#ddd'; // Default background for revealed cells
+                        cell.innerHTML = '○';
                     }
                 }
             } else if (board[i][j].isFlagged) {
                 cell.innerHTML = '🚩';
                 cell.style.backgroundColor = '#fdd';
             } else {
-                cell.textContent = ' ';
+                cell.textContent = '';
             }
             if (!gameOver) {
                 cell.addEventListener('click', () => revealCell(i, j));
@@ -294,4 +422,55 @@ function loseSound() {
     var audio = new Audio('./losesound.mp3');
     audio.volume = audio_volume;
     audio.play();
+}
+
+function shareGame() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Check out this Minesweeper game!',
+            text: `Can you beat my Minesweeper game in ${seconds.toFixed(1)} seconds?`,
+        })
+        .then(() => {
+            console.log('Game shared successfully');
+        })
+        .catch((error) => {
+            console.error('Error sharing:', error);
+            // Fallback if sharing fails
+            copyToClipboard(url);
+            alert('Link copied to clipboard! Share it with your friends.');
+        });
+    } else {
+        // Fallback for browsers that do not support the Web Share API
+        copyToClipboard(url);
+        alert('Link copied to clipboard! Share it with your friends.');
+    }
+}
+
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        // navigator.clipboard is available
+        navigator.clipboard.writeText(text).then(() => {
+            console.log('Text copied to clipboard');
+        }, (err) => {
+            console.error('Could not copy text: ', err);
+        });
+    } else {
+        // Fallback to older method
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        // Move it off-screen
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-99999px';
+        textarea.style.top = '-99999px';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            console.log('Text copied to clipboard');
+        } catch (err) {
+            console.error('Could not copy text: ', err);
+        }
+        document.body.removeChild(textarea);
+    }
 }

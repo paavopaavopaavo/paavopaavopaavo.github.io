@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>April Fools - paavopaavopaavo</title>
+    <link rel="stylesheet" href="/global.css">
+    <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+
+    <style>
+        h1 {
+            font-size: 100px;
+            text-align: center;
+            margin-top: 200px;
+            text-decoration: none;
+            animation: roll 3.5s linear infinite;
+        }
+
+        @keyframes roll {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://paavopaavopaavo.github.io/home" class="navbar-link" id="homepage-link-container">
+                <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+                onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+                onmouseout="this.src='/assets/paavopaavopaavo.png';">
+            </a></li>
+            <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+        </ul>
+    </nav>
+
+    <h1>🫵🤣</h1>
+    <h1>APRIL FOOLS!!!!</h1>
+
+    <footer>
+        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <span onclick="sharePage()"><a href="">Share this page</a></span>
+    </footer>
+
+
+    <script src="/global.js"></script>
+</body>
+</html>

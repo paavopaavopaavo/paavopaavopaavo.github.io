@@ -91,12 +91,14 @@ function handleCardClick(event) {
   }
 }
 
-function initGame() {
+function initGame(addEventListeners = true) {
   const allImages = [...images, ...images];
   shuffle(allImages);
   allImages.forEach(image => {
       const card = createCard(image);
-      card.addEventListener('click', handleCardClick);
+      if (addEventListeners) {
+          card.addEventListener('click', handleCardClick);
+      }
       gameBoard.appendChild(card);
   });
 }

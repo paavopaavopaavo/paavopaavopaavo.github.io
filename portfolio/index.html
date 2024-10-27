@@ -24,101 +24,101 @@
                 imgElement.style.transform = 'rotate(' + randomRotation + 'deg)';
             });
         });
-        
-        </script>
+    </script>
 </head>
 <body>
-    <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
-            <img id="homepage-link" src="/assets/paavopaavopaavo.png"
-            onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
-            onmouseout="this.src='/assets/paavopaavopaavo.png';">
-        </a></li>
-        <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
-    </ul>
-    
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://paavopaavopaavo.github.io/home" class="navbar-link" id="homepage-link-container">
+                <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+                onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+                onmouseout="this.src='/assets/paavopaavopaavo.png';">
+            </a></li>
+            <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+        </ul>
+    </nav>
+
+    <h1>Portfolio</h1>
     <p id="start-text">
         Hiya! This is my own little art gallery. 
-        If you like my little paintings and what not, you can <a id="link-share" onclick="share()">share this website</a> for others to see! <br>
-        This page is updated everytime there is new creative work.<pre>*    *    *</pre><br><br><br><br>
+        If you like my little paintings and sculptures and what not, you can <a id="link-share" onclick="share()">share this website</a> for others to see! <br>
+        Clicking on an image will open a lightbox, where you can view the image in full resolution, zoom in and share the specific piece of art!
     </p>
     
     
     
     <div id="art-container">
-        <div id="tree">
-            <img src="./artwork/tree.jpg" class="art-image">
+        <div id="tree" class="art">
+            <img src="./artwork/tree.jpg" data-full="./artwork/tree.jpg" class="art-image" onclick="openLightbox(this)" alt="A bushy tree on a grassy field.">
             <h2>Tree</h2>
-            <p class="art-desc">Just a- just a tree. Looks like it'd be fun to climb. Also hid my initials there. Or did I?</p>
+            <p class="art-desc">Just a tree. Looks like it'd be fun to climb. Also hid my initials there. Or did I?</p>
         </div>
-        <div id="lilja">
-            <img src="./artwork/lilja.png" class="art-image">
+        <div id="lilja" class="art">
+            <img src="./artwork/lilja.png" data-full="./artwork/lilja.png" class="art-image" onclick="openLightbox(this)" alt="Portrait of a girl with short brown hair, without a face or a torso.">
             <h2>Lilja</h2>
-            <p class="art-desc">Portrait of my sister <i class="fa-regular fa-heart" style="color: mediumvioletred;"></i>. Went for a faceless look.</p>
+            <p class="art-desc">Portrait of my sister <i class="fa-solid fa-heart" style="color: rgb(255, 106, 200);"></i>. Went for a faceless look.</p>
         </div>
-        <div id="cmy">
-            <img src="./artwork/cmy.jpg" class="art-image">
+        <div id="cmy" class="art">
+            <img src="./artwork/cmy.jpg" data-full="./artwork/cmy.jpg" class="art-image" onclick="openLightbox(this)" alt="A watercolour painting of a cyan, magenta and yellow skull.">
             <h2>CMY</h2>
             <p class="art-desc">Tried to use cyan, magenta and yellow as in the CMY color model as the palette/inspiration.</p>
         </div>
-        <div id="lavalamp">
-            <img src="./artwork/lavalamp.png" class="art-image">
+        <div id="lavalamp" class="art">
+            <img src="./artwork/lavalamp.png" data-full="./artwork/lavalamp.png" class="art-image" onclick="openLightbox(this)" alt="A lavalamp-like painting with multiple blobs resembling skulls.">
             <h2>Lavalamp</h2>
-            <p class="art-desc">Classic art practice where you draw blobs and then make faces out of them. Skulls, bones and a pelvis. Can you spot yourself in there?</p>
+            <p class="art-desc">Classic art practice where you draw blobs and then make faces out of them. Skulls, bones and a pelvis. Can you relate to anyone there?</p>
         </div>
-        <div id="roses">
-            <img src="./artwork/roses.jpg" class="art-image">
+        <div id="roses" class="art">
+            <img src="./artwork/roses.jpg" data-full="./artwork/roses.jpg" class="art-image" onclick="openLightbox(this)" alt="A watercolour painting of two roses.">
             <h2>Roses</h2>
             <p class="art-desc">Was looking for inspiration and some roses were on a vase. "Inspiration can strike anywhere!", right?</p>
         </div>
-        <div id="daffodils">
-            <img src="./artwork/daffodils.jpg" class="art-image">
+        <div id="daffodils" class="art">
+            <img src="./artwork/daffodils.jpg" data-full="./artwork/daffodils.jpg" class="art-image" onclick="openLightbox(this)" alt="A skull placed on a daffodil field. The skull has a snail on it.">
             <h2>Daffodils</h2>
             <p class="art-desc">Hey, skulls are hard! ...and daffodils pretty. (invasive, ha!)</p>
         </div>
-        <div id="ifeelnice">
-            <img src="./artwork/ifeelnice.jpeg" class="art-image wide-image">
+        <div id="ifeelnice" class="art">
+            <img src="./artwork/ifeelnice.jpeg" data-full="./artwork/ifeelnice.jpeg" class="art-image" onclick="openLightbox(this)" alt="Salt and pepper shakes side by side.">
             <h2>I Feel Nice</h2>
             <p class="art-desc"><i>...like sugar and spice...</i> It's actually just salt and pepper shakes.</p>
-        </div>
-        <div class="art-cluster">
-            <div class="art-cluster-images">
-                <img src="./artwork/embr_roses.jpeg" class="polaroid art-image">
-                <img src="./artwork/embr_butterfly.jpg" class="polaroid art-image">
-            </div>
-            <h2>Roses / Butterfly</h2>
-            <p class="art-desc">This is some embroidery practice I did. I love the rose technique, but the butterfly was supposed to be a lemon. Screwed up.</p>
-        </div>
-        <div id="selfportrait">
-            <img src="./artwork/selfportrait.png" class="art-image">
-            <h2>Self portrait</h2>
-            <p class="art-desc"><i>Who is this handsome young man..?</i> The search keeps going.</p>
         </div>
     </div>
     
     <p id="start-text">
-        <i>"Why so many skulls?"</i> Skulls are a geometrically complex shape that can easily be recognized. What does that say about me? Who knows.
-        <br> 
+        <i>"Why so many skulls?"</i> Skulls are a geometrically complex shape that can easily be recognized. Also I like them.<br> 
     </p>
     
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal">
+        <div>
+            <div id="lightbox-buttons">
+                <button id="lightbox-close">close <i class="fa-solid fa-xmark"></i></button>
+                <button id="lightbox-share">share <i class="fa-solid fa-share-nodes"></i></button>
+            </div>
+            <img id="lightbox-image" src="" alt="Expanded Artwork"></div>
+            <div><div id="lightbox-title"></div>
+            <div id="lightbox-caption"></div></div>
+            <div id="lightbox-nav">
+                <i class="fa-solid fa-arrow-left" id="lightbox-prev"></i>
+                <i class="fa-solid fa-arrow-right" id="lightbox-next"></i>
+            </div>
+        </div>
+        
+    <!-- 
+        Collection text
+        <h3><img class="collection-image" src="./exhibition_icon.png"></img> | Displayed in EXHIBITON - 2024</h3>
+        <h3><i class="fa-solid fa-university collection-icon"></i> | Displayed in EXHIBITON - 2024</h3>
+    -->
+
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <span onclick="sharePage()"><a href="">Share this page</a></span>
     </footer>
     
-    <script>
-        function share() {
-            if (navigator.share) {
-                navigator.share({
-                    url: 'https://paavopaavopaavo.github.io/portfolio',
-                })
-                .then(() => console.log('Successful share'))
-                .catch((error) => console.log('Error sharing', error));
-            }
-        }
-        window.share = share;
-    </script>
+    <script src="./script.js"></script>
     <script src="/global.js"></script>
 </body>
 </html>

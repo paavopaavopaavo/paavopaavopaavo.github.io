@@ -36,6 +36,22 @@ a:hover {
   transition: all .2s;
 }
 
+.new {
+  animation: new-game 1s infinite;
+}
+
+@keyframes new-game {
+  0% {
+    box-shadow: yellow 0px 0px 10px;
+  }
+  50% {
+    box-shadow: yellow 0px 0px 0px;
+  }
+  100% {
+    box-shadow: yellow 0px 0px 10px;
+  }
+}
+
 .game:hover {
   border: var(--website-theme-color) 1px solid;
 }

@@ -8,20 +8,23 @@
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
-            <img id="homepage-link" src="/assets/paavopaavopaavo.png"
-            onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
-            onmouseout="this.src='/assets/paavopaavopaavo.png';">
-        </a></li>
-        <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
-    </ul>
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://paavopaavopaavo.github.io/home" class="navbar-link" id="homepage-link-container">
+                <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+                onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+                onmouseout="this.src='/assets/paavopaavopaavo.png';">
+            </a></li>
+            <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+        </ul>
+    </nav>
 
     <button>I'm a button!</button><button disabled>I'm a disabled button.</button><br>
     <input placeholder="Text input!"><br>
-    <input type="color"><br>
+    <div id="color-input"><input type="color"></div>
+    <br>
     <a href="#">I'm a link. Click me!</a><br>
     <a href="#">I go somewhere else <i class="fa-solid fa-up-right-from-square external-link"></i></a>
     <p>Press <kbd onclick="location.reload()">CTRL + R</kbd> to reload!</p>
@@ -33,14 +36,25 @@
     More text for previewing!<br>
 <br>
     This is an inline code preview <code>testFunction()</code> blah blah blah<br><br>
+    More code:<br>
     <hr> divider!<br>
     <p>Regular font. blah. <br>
         <span style="font-family: var(--cursive), cursive">Cursive Font!</span><br>
         <span style="font-family: var(--monospace), monospace">Monospace font. Beep boop.</span><br>
         <span style="font-family: var(--title)">Title font! Hulk! Smash!</span><br>
     </p>
+    <i>Hello, I'm italic text!</i><br>
+
+    <div class="share">
+        <p>Share</p>
+        <a onclick="advancedShare('look at me I am a shared text', 'regular')"><i class="fa-solid fa-share-nodes"></i> Share</a>
+        <a onclick="advancedShare('look at me I am a shared text', 'whatsapp')"><i class="fa-brands fa-whatsapp"></i> Share on Whatsapp</a>
+        <a onclick="advancedShare('look at me I am a shared text', 'threads')"><i class="fa-brands fa-threads"></i> Share on Threads</a>
+    </div>
+
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <span onclick="sharePage()"><a href="">Share this page</a></span>
     </footer>
     <script src="/global.js"></script>
 </body>

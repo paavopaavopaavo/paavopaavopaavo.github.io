@@ -17,18 +17,24 @@
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <ul class="navbar">
-        <li><a href="https://paavopaavopaavo.github.io/" class="navbar-link" id="homepage-link-container">
-            <img id="homepage-link" src="/assets/paavopaavopaavo.png"
-            onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
-            onmouseout="this.src='/assets/paavopaavopaavo.png';">
-        </a></li>
-        <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
-        <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
-    </ul>
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://paavopaavopaavo.github.io/home" class="navbar-link" id="homepage-link-container">
+                <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+                onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+                onmouseout="this.src='/assets/paavopaavopaavo.png';">
+            </a></li>
+            <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+        </ul>
+    </nav>
 
     <div class="game-container">
+        <a href="https://paavopaavopaavo.github.io/games/halloween"><div class="game" data-add-date="2024-10-01">
+            <img src="./halloween/embedimage.png" alt="Halloween" class="game-image">
+            <div class="game-desc">Halloween</div>
+        </div></a>
         <a href="https://paavopaavopaavo.github.io/games/memory"><div class="game">
             <img src="./memory/embedimage.png" alt="Memory" class="game-image">
             <div class="game-desc">Memory Match</div>
@@ -52,8 +58,29 @@
     </div><br>
 
     <footer>
-        <p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
+        <span onclick="sharePage()"><a href="">Share this page</a></span>
     </footer>
+    <script>
+        function updateNewGameIcon() {
+            const currentDate = new Date();
+            const gameElements = document.querySelectorAll('.game');
+            gameElements.forEach(gameElement => {
+                // Gather the date from the data-add-date attribute
+                const addDate = new Date(gameElement.getAttribute('data-add-date'));
+                // Calculate the difference in days
+                const diffInDays = Math.floor((currentDate - addDate) / (1000 * 60 * 60 * 24));
+                // If the game was added within the last 30 days, add the new-game class
+                if (diffInDays <= 30) {
+                    gameElement.classList.add('new');
+                    // Add the new game emoji to the game-desc
+                    const gameDesc = gameElement.querySelector('.game-desc');
+                    gameDesc.innerHTML = '<span class="new-game-emoji">🆕</span> - ' + gameDesc.innerHTML;
+                }
+            });
+        }
+        updateNewGameIcon();
+    </script>
     <script src="/global.js"></script>
 </body>
 </html>

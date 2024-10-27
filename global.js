@@ -5,74 +5,120 @@ var today = new Date();
 var day = today.getDate();
 var month = today.getMonth() + 1; // January is 0
 
-if (month === 10 && day >= 27) {
-    // 
-    navbarLogo.src = "/assets/timed/halloween.png";
-    navbarLogo.onmouseover = function() {
-        this.src = '/assets/timed/halloween_hover.png';
-    }
-    navbarLogo.onmouseout = function() {
-        this.src = '/assets/timed/halloween.png';
-    }
-    createTooltip('This is for <i>Halloween!</i> Enjoy!');
-    document.documentElement.style.setProperty('--website-theme-color', '#e24304');
-    document.documentElement.style.setProperty('--website-theme-dark', '#9a2b00');
-    document.documentElement.style.setProperty('--website-theme-light', '#ff9047');
-    changeFooter('<p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-solid fa-crow fa-bounce halloween-raven" onclick="halloweenRavenSound()" style="cursor: pointer;"></i></p>');
-} else if (month === 12) {
+checkDate();
 
-    navbarLogo.src = "/assets/timed/christmas.png";
-    navbarLogo.onmouseover = function() {
-        this.src = '/assets/timed/christmas_hover.png';
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: window.location.href
+        }).then(() => {
+            console.log('Thanks for sharing!');
+        })
+        .catch(console.error);
+    } else {
+        // Fallback for browsers that don't support the Web Share API
+        alert('Web Share API is not supported in this browser.');
     }
-    navbarLogo.onmouseout = function() {
-        this.src = '/assets/timed/christmas.png';
-    }
-    createTooltip('This is for <i>Christmas!</i> Enjoy!');
-    // The navbar element's background changes to a repeating image
-    document.getElementsByClassName("navbar")[0].style.backgroundImage = "url('/assets/timed/christmasdecoration.png')";
-    document.getElementsByClassName("navbar")[0].style.backgroundSize = "contain";
-    document.documentElement.style.setProperty('--website-theme-color', 'green');
-    document.documentElement.style.setProperty('--website-theme-dark', 'red');
-    document.documentElement.style.setProperty('--website-theme-light', '#dbfffd');
-    changeFooter('<p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-solid fa-gift fa-bounce christmas-gift" onclick="christmasGiftThing()" style="cursor: pointer;"></i></p>');
-    function christmasGift() {
-        const colors = ['red', 'purple', 'hotpink', 'orange', 'blue', 'green', 'teal'];
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        let gift = document.querySelector(".christmas-gift");
-        gift.style.color = randomColor;
-    }
+}
 
-    function christmasGiftThing() {
-        window.location.href = "https://paavopaavopaavo.github.io/special/xmas";
+function advancedShare(text, platform) {
+    switch (platform) {
+        case 'regular':
+            if (navigator.share) {
+                navigator.share({
+                    text: text
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                })
+                .catch(console.error);
+            } else {
+                // Fallback for browsers that don't support the Web Share API
+                alert('Web Share API is not supported in this browser.');
+            }
+            break;
+        case 'whatsapp':
+            window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+            break;
+        case 'threads':
+            window.open(`https://threads.net/intent/post?text=${encodeURIComponent(text)}`, '_blank');
+            break;
     }
-    christmasGift();
-    // Call the christmasGift function after the footer has been updated
-} else if (month === 2 && day === 14) {
-    navbarLogo.src = "/assets/timed/valentines.png";
-    navbarLogo.onmouseover = function() {
-        this.src = '/assets/timed/valentines_hover.png';
+}
+
+function checkDate() {
+    if (month === 10 && day >= 27) {
+        // 
+        navbarLogo.src = "/assets/timed/halloween.png";
+        navbarLogo.onmouseover = function() {
+            this.src = '/assets/timed/halloween_hover.png';
+        }
+        navbarLogo.onmouseout = function() {
+            this.src = '/assets/timed/halloween.png';
+        }
+        createTooltip('This is for <i>Halloween!</i> Enjoy!');
+        document.documentElement.style.setProperty('--website-theme-color', '#e24304');
+        document.documentElement.style.setProperty('--website-theme-dark', '#9a2b00');
+        document.documentElement.style.setProperty('--website-theme-light', '#ff9047');
+        changeFooter('<p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-solid fa-crow fa-bounce halloween-raven" onclick="halloweenRavenSound()" style="cursor: pointer;"></i></p>');
+    } else if (month === 12) {
+    
+        navbarLogo.src = "/assets/timed/christmas.png";
+        navbarLogo.onmouseover = function() {
+            this.src = '/assets/timed/christmas_hover.png';
+        }
+        navbarLogo.onmouseout = function() {
+            this.src = '/assets/timed/christmas.png';
+        }
+        createTooltip('This is for <i>Christmas!</i> Enjoy!');
+        // The navbar element's background changes to a repeating image
+        document.getElementsByClassName("navbar")[0].style.backgroundImage = "url('/assets/timed/christmasdecoration.png')";
+        document.getElementsByClassName("navbar")[0].style.backgroundSize = "contain";
+        document.documentElement.style.setProperty('--website-theme-color', 'green');
+        document.documentElement.style.setProperty('--website-theme-dark', 'red');
+        document.documentElement.style.setProperty('--website-theme-light', '#dbfffd');
+        changeFooter('<p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-solid fa-gift fa-bounce christmas-gift" onclick="christmasGiftThing()" style="cursor: pointer;"></i></p>');
+        function christmasGift() {
+            const colors = ['red', 'purple', 'hotpink', 'orange', 'blue', 'green', 'teal'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            let gift = document.querySelector(".christmas-gift");
+            gift.style.color = randomColor;
+        }
+    
+        function christmasGiftThing() {
+            window.location.href = "https://paavopaavopaavo.github.io/special/xmas";
+        }
+        christmasGift();
+        // Call the christmasGift function after the footer has been updated
+    } else if (month === 2 && day === 14) {
+        navbarLogo.src = "/assets/timed/valentines.png";
+        navbarLogo.onmouseover = function() {
+            this.src = '/assets/timed/valentines_hover.png';
+        }
+        navbarLogo.onmouseout = function() {
+            this.src = '/assets/timed/valentines.png';
+        }
+        createTooltip("This is for <i>Valentine's Day!</i> Enjoy!");
+        document.documentElement.style.setProperty('--website-theme-color', 'hotpink');
+        document.documentElement.style.setProperty('--website-theme-dark', 'pink');
+        document.documentElement.style.setProperty('--website-theme-light', 'pink' );
+    } else if (month === 4 && day === 1) {
+        createTooltip("It's <i>April's Fools!!</i> Nothing suspicious.");
+        logo.src = "/assets/timed/aprilfools.png";
+        // When logo is clicked, redirect to ./special/aprilfools
+        logo.parentElement.href = './special/aprilfools';
+    } else if (month === 4 && day === 2) {
+        navbarLogo.onmouseover = function() {
+            this.src = '/assets/timed/birthday.png';
+        }
+        navbarLogo.onmouseout = function() {
+            this.src = '/assets/timed/birthday.png';
+        }
+        navbarLogo.src = "/assets/timed/birthday.png";
+        createTooltip("This is for <i>my birthday!</i> Enjoy!");
+        document.getElementsByClassName("navbar")[0].style.backgroundImage = "url('/assets/timed/birthdaydecoration.png')";
+        document.getElementsByClassName("navbar")[0].style.backgroundSize = "contain";
     }
-    navbarLogo.onmouseout = function() {
-        this.src = '/assets/timed/valentines.png';
-    }
-    createTooltip("This is for <i>Valentine's Day!</i> Enjoy!");
-    document.documentElement.style.setProperty('--website-theme-color', 'hotpink');
-    document.documentElement.style.setProperty('--website-theme-dark', 'pink');
-    document.documentElement.style.setProperty('--website-theme-light', 'pink' );
-} else if (month === 4 && day === 1) {
-    createTooltip("This is for <i>April Fool's!</i> Enjoy!");
-    document.getElementById("homepage-link-container").href = "https://youtu.be/dQw4w9WgXcQ";
-    logo.src = "/assets/timed/aprilfools.png";
-} else if (month === 4 && day === 2) {
-    navbarLogo.onmouseover = function() {
-        this.src = '/assets/timed/birthday.png';
-    }
-    navbarLogo.onmouseout = function() {
-        this.src = '/assets/timed/birthday.png';
-    }
-    navbarLogo.src = "/assets/timed/birthday.png";
-    createTooltip("This is for <i>my birthday!</i> Enjoy!");
 }
 
 function halloweenRavenSound() {
@@ -83,7 +129,7 @@ function halloweenRavenSound() {
 }
 
 function changeFooter(text) {
-    document.querySelector("footer").innerHTML = text;
+    document.getElementById("footer-text").innerHTML = text;
 }
 
 function createTooltip(tooltipText) {
@@ -133,6 +179,8 @@ function createTooltip(tooltipText) {
 
 function footerClick() {
     const footerIcon = document.getElementById('footer-icon');
+    // Rotate 90 degrees clockwise
+    footerIcon.style.transform = 'rotate(90deg)';
     if (footerIcon.classList.contains('fa-hand-peace')) {
         // Change the icon to a closed fist
         footerIcon.classList.remove('fa-hand-peace');

@@ -18,6 +18,7 @@
   background: url("https://upload.wikimedia.org/wikipedia/commons/0/09/Night_stars_berlin.png");
   background-size: contain;
   animation: scroll 250s linear infinite;
+  cursor: grab;
   
 }
 

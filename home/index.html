@@ -19,17 +19,14 @@
     <script>
         let logo = document.getElementById("homepage-logo");
 
-        if (month === 10 && day >= 28) {
+        if (month === 10 && day >= 27) {
 
             logo.src = "/assets/timed/halloween.png";
             document.documentElement.style.setProperty('--website-theme-color', '#e24304');
             document.documentElement.style.setProperty('--website-theme-dark', '#9a2b00');
-            document.body.style.backgroundColor = "black";
         } else if (month === 12) {
 
             logo.src = "/assets/timed/christmas.png";
-
-        // The navbar element's background changes to a repeating image
             document.documentElement.style.setProperty('--website-theme-color', 'green');
             document.documentElement.style.setProperty('--website-theme-dark', 'red');
         } else if (month === 2 && day === 14) {
@@ -37,10 +34,6 @@
 
             document.documentElement.style.setProperty('--website-theme-color', 'hotpink');
             document.documentElement.style.setProperty('--website-theme-dark', 'pink');
-        } else if (month === 4 && day === 1) {
-            let homepageLink = document.getElementById("homepage-link");
-            homepageLink.href = "https://youtu.be/dQw4w9WgXcQ";
-            logo.src = "/assets/timed/aprilfools.png";
         } else if (month === 4 && day === 2) {
             logo.src = "/assets/timed/birthday.png";
         }
