@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Finland Geography Game</title>
+  <meta charset="utf-8" />
+  <script src="https://www.webglearth.com/v2/api.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    #earth_div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #game-controls {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
+      background-color: rgb(255 255 255 / 95%);
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    #game-controls label,
+    #game-controls select,
+    #game-controls button {
+      margin: 5px 0;
+    }
+
+    #location-info {
+      position: absolute;
+      top: 130px;
+      left: 15px;
+      z-index: 1000;
+      background-color: rgb(255 255 255 / 95%);
+      padding: 10px;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    #location-prompt {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    #feedback {
+      margin-top: 10px;
+    }
+
+    #location-list-container {
+      position: absolute;
+      top: 250px;
+      left: 15px;
+      z-index: 1000;
+      background-color: rgb(255 255 255 / 95%);
+      padding: 10px;
+      border-radius: 5px;
+      max-height: 50%;
+      overflow-y: auto;
+      width: 200px;
+    }
+
+    #location-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #location-list li {
+      margin-bottom: 5px;
+    }
+
+    #location-list li.guessed {
+      color: green;
+    }
+
+    #location-list li.guessed::after {
+      content: " ✔";
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Game Controls -->
+  <div id="game-controls">
+    <label for="category-select">Valitse kategoria:</label>
+    <select id="category-select" onchange="startGame()">
+      <option value="cities">Suurkaupungit</option>
+      <option value="lakes">Järvet</option>
+      <option value="rivers">Joet</option>
+      <option value="sea-areas">Merialueet</option>
+      <option value="fells">Tunturit</option>
+    </select>
+    <button id="reveal-button" onclick="revealAnswer()">Näytä kartalta</button>
+  </div>
+
+  <!-- Location Prompt and Feedback -->
+  <div id="location-info">
+    <div id="location-prompt"></div>
+    <div id="feedback"></div>
+  </div>
+
+  <!-- List of Locations -->
+  <div id="location-list-container">
+    <h3>Sijainnit:</h3>
+    <ul id="location-list"></ul>
+  </div>
+
+  <!-- Earth Div -->
+  <div id="earth_div"></div>
+
+  <!-- Include the script -->
+  <script>
+    // Define location data
+    const locations = {
+      cities: [
+        { name: 'Helsinki', coords: [60.1699, 24.9384] },
+        { name: 'Espoo', coords: [60.2055, 24.6559] },
+        { name: 'Tampere', coords: [61.4978, 23.7610] },
+        { name: 'Vantaa', coords: [60.2934, 25.0378] },
+        { name: 'Oulu', coords: [65.0121, 25.4651] },
+        { name: 'Turku', coords: [60.4518, 22.2666] },
+        { name: 'Jyväskylä', coords: [62.2426, 25.7473] },
+        { name: 'Kuopio', coords: [62.8910, 27.6780] },
+        { name: 'Lahti', coords: [60.9827, 25.6615] },
+        { name: 'Kouvola', coords: [60.8667, 26.7050] },
+        { name: 'Pori', coords: [61.4850, 21.7972] },
+        { name: 'Joensuu', coords: [62.6010, 29.7634] },
+        { name: 'Lappeenranta', coords: [61.0583, 28.1868] },
+        { name: 'Hämeenlinna', coords: [60.9964, 24.4662] },
+        { name: 'Vaasa', coords: [63.0951, 21.6165] },
+        { name: 'Rovaniemi', coords: [66.5039, 25.7294] },
+        { name: 'Seinäjoki', coords: [62.7904, 22.8405] },
+        { name: 'Kotka', coords: [60.4664, 26.9458] },
+        { name: 'Salo', coords: [60.3831, 23.1288] },
+        { name: 'Mikkeli', coords: [61.6866, 27.2736] },
+      ],
+      lakes: [
+        { name: 'Saimaa', coords: [61.4928, 28.0836] },
+        { name: 'Päijänne', coords: [61.5833, 25.4667] },
+        { name: 'Inarijärvi', coords: [69.0636, 27.9350] },
+        { name: 'Pielinen', coords: [63.1750, 29.7194] },
+        { name: 'Oulujärvi', coords: [64.3833, 27.3333] },
+        { name: 'Kallavesi', coords: [62.8500, 27.7833] },
+        { name: 'Näsijärvi', coords: [61.6500, 23.7500] },
+      ],
+      rivers: [
+        { name: 'Kemijoki', coords: [66.6333, 25.7833] },
+        { name: 'Iijoki', coords: [65.3792, 25.3667] },
+        { name: 'Torniojoki', coords: [66.0000, 24.0000] },
+        { name: 'Kymijoki', coords: [60.5167, 26.9333] },
+        { name: 'Tenojoki', coords: [70.0000, 27.0000] },
+        { name: 'Kokemäenjoki', coords: [61.2000, 21.9000] },
+        { name: 'Oulujoki', coords: [65.0000, 25.4000] },
+        { name: 'Vuoksi', coords: [61.1000, 28.7667] },
+      ],
+      'sea-areas': [
+        { name: 'Itämeri', coords: [58.5000, 20.0000] },
+        { name: 'Merenkurkku', coords: [63.2833, 21.3833] },
+        { name: 'Perämeri', coords: [64.7500, 23.5000] },
+        { name: 'Pohjanlahti', coords: [62.5000, 20.5000] },
+        { name: 'Saaristomeri', coords: [60.1333, 21.5000] },
+        { name: 'Selkämeri', coords: [61.5000, 20.5000] },
+        { name: 'Suomenlahti', coords: [60.0000, 26.5000] },
+      ],
+      fells: [
+        { name: 'Halti', coords: [69.3239, 21.2592] },
+        { name: 'Saana', coords: [69.0548, 20.8697] },
+        { name: 'Pallastunturi', coords: [68.0667, 24.0667] },
+        { name: 'Yllästunturi', coords: [67.5585, 24.2391] },
+        { name: 'Sokosti', coords: [68.2667, 28.0167] },
+        { name: 'Pyhätunturi', coords: [67.0333, 27.2167] },
+        { name: 'Levi', coords: [67.8047, 24.8038] },
+        { name: 'Ruka', coords: [66.1686, 29.1394] },
+      ],
+    };
+
+    // Variables
+    let currentLocationIndex = 0;
+    let currentCategory = 'cities';
+    let shuffledLocations = [];
+    let earth;
+    let markers = []; // To track markers added to the map
+    let guessedLocations = [];
+    let isDragging = false;
+    let mouseDownPos = null;
+
+    function initialize() {
+      // Create the map
+      earth = new WE.map('earth_div', {
+        center: [64.0, 26.0], // Centered over Finland
+        zoom: 5,
+      });
+      
+
+      // Add a tile layer (e.g., OpenStreetMap)
+      WE.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+      }).addTo(earth);
+
+      // Start the game with the default category
+      startGame();
+
+      // Variable to track if the map is being dragged
+      let isDragging = false;
+
+      // Event listener for drag start
+      earth.on('dragstart', function () {
+        isDragging = true;
+      });
+
+      // Event listener for drag end
+      earth.on('dragend', function () {
+        setTimeout(() => {
+          isDragging = false;
+        }, 100);
+      });
+
+      // Handle clicks
+      earth.on('click', function (event) {
+        if (!isDragging) {
+          // It's a click
+          const coords = [event.latitude, event.longitude];
+          checkGuess(coords);
+        }
+      });
+    }
+
+    // Start a new game round
+    function startGame() {
+      currentCategory = document.getElementById('category-select').value;
+      guessedLocations = [];
+      currentLocationIndex = 0;
+
+      // Clone and shuffle the locations
+      shuffledLocations = shuffleArray([...locations[currentCategory]]);
+
+      updateLocationList();
+      setNextLocation();
+
+      // Clear any previous markers
+      removeMarkers();
+    }
+
+    // Set the next location to find
+    function setNextLocation() {
+      if (currentLocationIndex < shuffledLocations.length) {
+        const currentLocation = shuffledLocations[currentLocationIndex];
+        document.getElementById('location-prompt').innerText = `Etsi kartalta ${currentLocation.name}`;
+        document.getElementById('feedback').innerText = '';
+      } else {
+        document.getElementById('location-prompt').innerText = 'Onneksi olkoon! Löysit kaikki paikat! Kymppi kokeessa?';
+        document.getElementById('feedback').innerText = '';
+      }
+    }
+
+    // Check the user's guess
+    function checkGuess(guessCoords) {
+      if (currentLocationIndex >= shuffledLocations.length) {
+        return;
+      }
+
+      const currentLocation = shuffledLocations[currentLocationIndex];
+      const distance = getDistance(currentLocation.coords, guessCoords);
+
+      if (distance < 50) { // 50 km threshold for correctness
+        document.getElementById('feedback').innerText = 'Oikein!';
+        // Mark as guessed
+        guessedLocations.push(currentLocation.name);
+        updateLocationList();
+
+        // Add a marker at the correct location
+        const marker = WE.marker(currentLocation.coords).addTo(earth);
+        markers.push(marker);
+
+        currentLocationIndex++;
+        setTimeout(() => {
+          setNextLocation();
+        }, 1000); // Proceed to the next location after 1 second
+      } else {
+        document.getElementById('feedback').innerText = `Yritä uudestaan! Olit ${Math.round(distance)} km kaukana.`;
+        // Optionally, add a marker at the guessed location
+        const marker = WE.marker(guessCoords).addTo(earth);
+        markers.push(marker);
+      }
+    }
+
+    // Reveal the correct location on the map
+    function revealAnswer() {
+      if (currentLocationIndex >= shuffledLocations.length) {
+        return;
+      }
+
+      const currentLocation = shuffledLocations[currentLocationIndex];
+      // Set the view to center on the correct location
+      earth.setView([currentLocation.coords[0], currentLocation.coords[1]], 7);
+
+      // Add a marker at the correct location
+      const marker = WE.marker(currentLocation.coords).addTo(earth);
+      markers.push(marker);
+    }
+
+    // Helper function to calculate distance between two coordinates
+    function getDistance(coords1, coords2) {
+      const toRad = (value) => (value * Math.PI) / 180;
+      const lat1 = coords1[0];
+      const lon1 = coords1[1];
+      const lat2 = coords2[0];
+      const lon2 = coords2[1];
+
+      const R = 6371; // Earth radius in km
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) *
+          Math.cos(toRad(lat2)) *
+          Math.sin(dLon / 2) *
+          Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+
+    // Function to remove all markers from the map
+    function removeMarkers() {
+      for (let i = 0; i < markers.length; i++) {
+        earth.removeMarker(markers[i]);
+      }
+      markers = [];
+    }
+
+    // Function to shuffle an array
+    function shuffleArray(array) {
+      let currentIndex = array.length,
+        randomIndex;
+
+      // While there remain elements to shuffle
+      while (currentIndex !== 0) {
+        // Pick a remaining element
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // Swap it with the current element
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+      }
+
+      return array;
+    }
+
+    // Function to update the list of locations
+    function updateLocationList() {
+      const locationList = document.getElementById('location-list');
+      locationList.innerHTML = '';
+
+      shuffledLocations.forEach((location) => {
+        const li = document.createElement('li');
+        li.textContent = location.name;
+
+        if (guessedLocations.includes(location.name)) {
+          li.classList.add('guessed');
+        }
+
+        locationList.appendChild(li);
+      });
+    }
+
+    window.onload = initialize;
+  </script>
+
+</body>
+</html>
