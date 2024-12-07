@@ -135,7 +135,7 @@ function getRandomItem() {
     // Get a random index
     var randomIndex = Math.floor(Math.random() * responses.length);
     // Get the random item from the array
-    getInputText(responses[randomIndex])
+    getInputText(responses[randomIndex]);
 }
 
 

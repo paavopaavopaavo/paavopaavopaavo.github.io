@@ -183,7 +183,15 @@ function startGame() {
     timerInterval = setInterval(function() {
         seconds += 0.1;
         seconds = Math.round(seconds * 10) / 10;
-        document.getElementById('timer').textContent = seconds.toFixed(1);
+    
+        let minutes = Math.floor(seconds / 60);
+        let remainingSeconds = (seconds % 60).toFixed(1);
+    
+        if (seconds % 60 < 10) {
+            remainingSeconds = '0' + remainingSeconds;
+        }
+    
+        document.getElementById('timer').textContent = minutes + ':' + remainingSeconds;
     }, 100);
 
     document.getElementById('hintbutton').disabled = true;
@@ -274,19 +282,20 @@ function renderBoard() {
                     cell.innerHTML = '💣';
                     cell.style.backgroundColor = '#f00';
                 } else {
-                    cell.textContent = board[i][j].neighborMines || '';
                     if (board[i][j].neighborMines > 0) {
+                        cell.textContent = board[i][j].neighborMines;
                         cell.style.backgroundColor = '#C0C9C9'; // Single color for 1-8 mines
                     } else {
+                        cell.textContent = '0';
                         cell.style.backgroundColor = '#ddd'; // Default background for revealed cells
-                        cell.innerHTML = '○';
+                        cell.style.color = 'gray'; // Set text color to gray for 0 neighboring mines
                     }
                 }
             } else if (board[i][j].isFlagged) {
                 cell.innerHTML = '🚩';
                 cell.style.backgroundColor = '#fdd';
             } else {
-                cell.textContent = '';
+                cell.textContent = ''; 
             }
             if (!gameOver) {
                 cell.addEventListener('click', () => revealCell(i, j));
@@ -320,17 +329,10 @@ function revealCell(x, y) {
     if (board[x][y].isMine) {
         board[x][y].isRevealed = true;
         gameOver = true;
-
-        // Set the explosion emoji for the clicked cell
-        const boardElement = document.getElementById('board');
-        const cell = boardElement.children[x * boardSize + y];
-        cell.innerHTML = '💥';  // Explosion emoji
-        cell.style.backgroundColor = '#f00'; // Red background for explosion
-        
+        document.body.style.backgroundColor = '#EF5350'; // Set red background when losing
         revealAllMines();
-        renderBoard();  // Render the board after showing the explosion emoji
-        loseSound();
-
+        renderBoard();
+        loseSound();    
         return;
     }
 
@@ -347,7 +349,6 @@ function revealAllMines() {
         for (let j = 0; j < boardSize; j++) {
             if (board[i][j].isMine) {
                 board[i][j].isRevealed = true;
-                document.body.style.backgroundColor = '#EF5350';
             }
         }
     }
@@ -397,9 +398,30 @@ function checkWinCondition() {
         gameOver = true;
         revealAllMines();
         renderBoard();
-        document.body.style.backgroundColor = '#9CCC65';
         winSound();
         clearInterval(timerInterval);
+        var numberOfConfetti = numMines / 3;
+        numberOfConfetti = Math.ceil(numberOfConfetti)
+        for (let i = 1; i <= numberOfConfetti; i++) {
+            setTimeout(function() {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                confetti({
+                    particleCount: 500,
+                    startVelocity: 30,
+                    spread: 430,
+                    ticks: 250,
+                    shapes: ['circle', 'triangle', 'star'],
+                    gravity: 2,
+                    zIndex: Math.random() * 2 - 1,
+                    disableForReducedMotion: prefersReducedMotion,
+                    origin: {
+                        x: Math.random(),
+                        // Adjust the y value to control where the confetti originates from
+                        y: Math.random() - 0.4
+                    }
+                });
+            }, i * 700);  // Delay increases with each iteration
+        }
     }
 }
 

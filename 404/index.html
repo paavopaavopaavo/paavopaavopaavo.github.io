@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Portfolio - Paavopaavopaavo">
+    <meta property="og:type" content="application">
+    <meta property="og:url" content="https://paavopaavopaavo.github.io/portfolio">
+    <meta property="og:image" content="https://paavopaavopaavo.github.io/portfolio/embedimage.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="450">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <title>Page not found - Paavopaavopaavo</title>
+    <link rel="stylesheet" href="./home/style.css">
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wandered {
+            margin: 0;
+            padding: 0;
+        } 
+
+        #not-found {
+            font-size: 1.25em;
+            margin: 5;
+            padding: 0;
+        }
+
+        #img {
+            width: 80vw;
+            height: 60vw;
+            max-width: 600px;
+            max-height: 450px;
+            margin: 2.5rem;
+        }
+
+        #time-left {
+            font-family: var(--monospace);
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://paavopaavopaavo.github.io/home" class="navbar-link" id="homepage-link-container">
+                <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+                onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+                onmouseout="this.src='/assets/paavopaavopaavo.png';">
+            </a></li>
+            <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+        </ul>
+    </nav>
+
+    <div id="container">
+    <img id="img" alt="Page not found illustration" src="">
+    <h1 id="not-found">Page not found</h1>
+    <p id="wandered">It seems you've wandered off somewhere...
+    <p id="redirecting">Redirecting home in <span style="font-weight: bold;" id="time-left">-</span> seconds.</p></p>
+    </div>
+
+
+    <footer>
+        <p id="footer-text">© Paavo Sadeharju 2024.</p><a href="/LICENSE.html">All rights reserved. 
+        </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i><br>
+        <span onclick="sharePage()"><a href="javascript:;">Share this page</a></span>
+    </footer>
+    
+    <script src="/global.js"></script>
+    <script>
+        const images = ["./frog.webp", "./toucan.webp", "./godzilla.webp", "./dragon.webp", "https://media1.tenor.com/m/3H_st0qOVwoAAAAd/tucan-funny.gif"];
+
+        // Set a random image source
+        document.getElementById('img').src = images[Math.floor(Math.random() * images.length)];
+
+        let seconds = 1500;
+        const countdownElement = document.getElementById('time-left');
+        const redirectingElement = document.getElementById('redirecting');
+
+        function updateCountdown() {
+            countdownElement.textContent = seconds;
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                redirectingElement.textContent = 'Redirecting home...';
+                window.location.href = 'https://paavopaavopaavo.github.io/home';
+            }
+            seconds--;
+        }
+
+        // Start the countdown
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+    <script src="/global.js"></script>
+</body>
+</html>

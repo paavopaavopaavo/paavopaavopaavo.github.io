@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
-@import url("/global.css");
 
 #crystalball {
-  background-color: #ffffff00;
+  background-color: #fff0;
   border: none;
   width: 60vw;
   height: 60vw;
@@ -20,7 +19,7 @@
 
 #crystalball-answer {
   font-size: 3.5vw;
-  color: rgb(252, 225, 255);
+  color: rgb(252 225 255);
   position: absolute;
   top: 41%;
   left: 50%;
@@ -47,7 +46,7 @@
 #question-input {
   cursor: text;
   background-color: var(--website-background-color);
-  border-radius: 3px 3px 3px 3px;
+  border-radius: 3px;
   border: 1.25px solid var(--dark-gray);
   color: black;
   font-family: var(--base), sans-serif;
@@ -75,16 +74,18 @@ button:hover {
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
 
-@media screen and (min-width: 750px) {
+@media screen and (width >= 750px) {
   #crystalball {
       width: 40vw;
       height: 40vw;
@@ -97,7 +98,7 @@ button:hover {
   #share {
     font-size: 2vw;
     background: no-repeat;
-    background-color: rgb(250,250,250);
+    background-color: rgb(250 250 250);
   }
 }
 

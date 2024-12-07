@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
   <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
   <ul class="navbar">
@@ -29,12 +30,6 @@
   </ul>
   
   <h1>Minesweeper</h1> 
-  <div id="hud">
-    <p>
-      🚩 <span id="flagsRemaining">10</span>/<span id="numMines">10</span> <span class="seperator">|</span> 
-      ⏱️ <span id="timer">-.-</span>
-    </p>
-  </div>
   <div>
     <label for="difficulty">Difficulty:</label>
     <select id="difficulty" onchange="setDifficulty()">
@@ -50,6 +45,12 @@
       <input type="number" id="custom-mines" min="1" value="20" onchange="checkCustomSettings()">
       <button onclick="applyCustomSettings()">Apply</button>
     </div>
+  </div>
+  <div id="hud">
+    <p>
+      🚩 <span id="flagsRemaining">10</span>/<span id="numMines">10</span> <span class="seperator">|</span> 
+      ⏱️ <span id="timer">-.-</span>
+    </p>
   </div>
 
   <div id="board"></div>
@@ -69,7 +70,7 @@
   <footer>
     <footer>
         <p id="footer-text">© Paavo Sadeharju 2024. All rights reserved. <i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
-        <span onclick="sharePage()"><a href="">Share this page</a></span> | <span><a href="https://buymeacoffee.com/paavopaavopaavo"> Buy me a coffee</a></span>
+        <span onclick="sharePage()"><a href="javascript:;">Share this page</a></span> | <span><a href="https://buymeacoffee.com/paavopaavopaavo"> Buy me a coffee</a></span>
     </footer>
   </footer>
   <script  src="./script.js"></script>

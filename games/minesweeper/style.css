@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=var(--base):400,400i,700");
-@import url("/global.css");
-
 #daily {
   margin-bottom: -1.5rem;
 }
@@ -12,8 +9,8 @@
 }
 
 .ad {
-  width: fit-content; /* or a specific width like 100% */
-  margin: 0 auto; /* This centers the element */
+  width: fit-content; 
+  margin: 0 auto; 
   font-size: 20px
 }
 
@@ -35,13 +32,12 @@ h3 {
 }
 
 label {
-  font-size: small;
+  font-size: 1.2rem;
 }
 
 #hud {
   display: flex;
   justify-content: center; 
-  font-size: 30px;
   font-family: var(--monospace), monospace;
 }
 
@@ -64,16 +60,15 @@ button {
 .cell {
   width: 40px;
   height: 40px;
-  margin: 2px;
   border: none;
   border-radius: 6.5px;
-  box-shadow: 0px 5px rgba(0, 0, 0, 0.191);
-  background-color: #eee;
-  font-family: var(--base), sans-serif;
+  box-shadow: 0 5px rgb(0 0 0 / 19.1%);
+  font-family: var(--monospace), monospace, sans-serif;
   margin: 0;
   padding: 0;
-  font-size: 24px;
-  transition: background-color 0.3s ease; /* Add transition effect */
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  background-color: #eee;
 }
 
 .game-icon {
@@ -97,7 +92,6 @@ a:hover {
 }
 
 .instructions-item {
-  list-style-type: none;
   margin-bottom: 0.5rem;
   padding-left: 0;
   list-style-type: none;

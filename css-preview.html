@@ -16,27 +16,31 @@
                 onmouseout="this.src='/assets/paavopaavopaavo.png';">
             </a></li>
             <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
-            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
             <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
         </ul>
     </nav>
 
-    <button>I'm a button!</button><button disabled>I'm a disabled button.</button><br>
+    <button>Button</button><button disabled>Disabled button</button><br>
     <input placeholder="Text input!"><br>
     <div id="color-input"><input type="color"></div>
+    <select>
+        <option>Option A</option>
+        <option>Option B</option>
+        <option>Option C</option>
+    </select>
     <br>
     <a href="#">I'm a link. Click me!</a><br>
     <a href="#">I go somewhere else <i class="fa-solid fa-up-right-from-square external-link"></i></a>
     <p>Press <kbd onclick="location.reload()">CTRL + R</kbd> to reload!</p>
     <h1>Title! (h1)</h1>
     And then some text.
-    <h2>Title! (h2)</h2>
+    <h2 class="art-title">Title! (h2)</h2>
     And then some more text.
     <h3>Title! (h3) (much wow)</h3>
     More text for previewing!<br>
 <br>
     This is an inline code preview <code>testFunction()</code> blah blah blah<br><br>
-    More code:<br>
     <hr> divider!<br>
     <p>Regular font. blah. <br>
         <span style="font-family: var(--cursive), cursive">Cursive Font!</span><br>
@@ -47,14 +51,15 @@
 
     <div class="share">
         <p>Share</p>
-        <a onclick="advancedShare('look at me I am a shared text', 'regular')"><i class="fa-solid fa-share-nodes"></i> Share</a>
-        <a onclick="advancedShare('look at me I am a shared text', 'whatsapp')"><i class="fa-brands fa-whatsapp"></i> Share on Whatsapp</a>
-        <a onclick="advancedShare('look at me I am a shared text', 'threads')"><i class="fa-brands fa-threads"></i> Share on Threads</a>
+        <a onclick="advancedShare('look at me I am shared text', 'regular')"><i class="fa-solid fa-share-nodes"></i> Share</a>
+        <a onclick="advancedShare('look at me I am shared text', 'whatsapp')"><i class="fa-brands fa-whatsapp"></i> Share on Whatsapp</a>
+        <a onclick="advancedShare('look at me I am shared text', 'threads')"><i class="fa-brands fa-threads"></i> Share on Threads</a>
     </div>
 
     <footer>
-        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
-        <span onclick="sharePage()"><a href="">Share this page</a></span>
+        <p id="footer-text">© Paavo Sadeharju 2024.</p><a href="/LICENSE.html">All rights reserved. 
+        </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i><br>
+        <span onclick="sharePage()"><a href="javascript:;">Share this page</a></span>
     </footer>
     <script src="/global.js"></script>
 </body>

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <nav>
@@ -25,8 +26,8 @@
                 onmouseout="this.src='/assets/paavopaavopaavo.png';">
             </a></li>
             <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
-            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
             <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
         </ul>
     </nav>
 
@@ -40,8 +41,9 @@
     <button onclick="restartGame()" type="button"><i class="fa-solid fa-arrows-rotate"></i> Restart</button>
 
     <footer>
-        <p id="footer-text">© Paavo Sadeharju 2024. <a href="/LICENSE.md">All rights reserved. </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i></p>
-        <span onclick="sharePage()"><a href="">Share this page</a></span>
+        <p id="footer-text">© Paavo Sadeharju 2024.</p><a href="/LICENSE.html">All rights reserved. 
+        </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i><br>
+        <span onclick="sharePage()"><a href="javascript:;">Share this page</a></span>
     </footer>
     <script src="/global.js"></script>
     <script src="./script.js"></script>

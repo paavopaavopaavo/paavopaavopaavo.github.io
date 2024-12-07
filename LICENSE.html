@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License - paavopaavopaavo</title>
+    <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+        #license-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        #license-container p {
+            font-family: var(--monospace);
+            font-size: 1.25rem;
+            margin: 20px;
+            padding: 0;
+        }
+
+        #license-container a {
+            cursor: pointer;
+        }
+
+        #license-container h1, div h2, div h3 {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="https://paavopaavopaavo.github.io/home" class="navbar-link" id="homepage-link-container">
+                <img id="homepage-link" src="/assets/paavopaavopaavo.png"
+                onmouseover="this.src='/assets/paavopaavopaavocrossed.png';"
+                onmouseout="this.src='/assets/paavopaavopaavo.png';">
+            </a></li>
+            <li><a href="https://paavopaavopaavo.github.io/portfolio" class="navbar-link">Portfolio</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/about" class="navbar-link">About</a></li>
+            <li><a href="https://paavopaavopaavo.github.io/games" class="navbar-link">Games</a></li>
+        </ul>
+    </nav>
+    <p>Issues? Try the <a href="/LICENSE.md">text-only version</a></p><br><br>
+    <div id="license-container">
+    <h1>Licensing Information</h1>
+    <p>© 2024 Paavo Sadeharju</p>
+
+    <h2 class="art-title">Code License</h2>
+    <p>The code contained in this repository and this website is provided for personal, non-commercial use only.
+    Unauthorized commercial use, distribution, or modification is prohibited without prior
+    written permission from the author.</p>
+
+    <h2 class="art-title">Content License</h2>
+    <p>All images, artwork, text, and other creative assets on this website are licensed under the
+    Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0).</p>
+
+    <p>To view a copy of this license, visit <a>https://creativecommons.org/licenses/by-nc-nd/4.0/</a>.</p>
+    </div>
+
+    <footer>
+        <p id="footer-text">© Paavo Sadeharju 2024.</p><a href="/LICENSE.html">All rights reserved. 
+        </a><i class="fa-regular fa-hand-peace" onclick="footerClick()" id="footer-icon"></i><br>
+        <span onclick="sharePage()"><a href="javascript:;">Share this page</a></span>
+    </footer>
+    <script src="/global.js"></script>
+</body>
+</html>

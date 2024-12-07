@@ -1,20 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=var(--base):400,400i,700");
-@import url("/global.css");
 
 .cross {
   width:17px; height:17px; position:absolute; top:50%; left:50%; margin:-8px auto auto -8px; z-index:1024;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEhSURBVDiNrZQxTsNAEEXfLDSWRYjBBTSkSEOZgnCASBQ03IvrUKTiBKaClpIUKHJsIhRHKfCniBdMJCcKyZemmZ3/NNrdGZNEXWbmgAvgBDhN0/Q2juMhMKliJKmsew5XABHQB1o+FwRBDLSr6AKXZpZI+vA1rgboAoM6oEEtYFDV/0KqDnqAbQDUfb3KhzOzA+B6C4CXAX0zc/4Sj7YEeLWAjmP5Crso2gvExuPxfRiG500VQRCczefz96bzoigyA26A46ai2Wx2F4bhw5pOcsfyF+6ibG+QEfD5T8AUeHOSvoAE0AbDqkrgSVLpACTlwMsWoBJ49kP4M8WSXs1sAlyxfginQCJp6hN/VoGkzMwegQ4QAe3FYpECOZDRsE++AWYTYG33oiq+AAAAAElFTkSuQmCC);
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEhSURBVDiNrZQxTsNAEEXfLDSWRYjBBTSkSEOZgnCASBQ03IvrUKTiBKaClpIUKHJsIhRHKfCniBdMJCcKyZemmZ3/NNrdGZNEXWbmgAvgBDhN0/Q2juMhMKliJKmsew5XABHQB1o+FwRBDLSr6AKXZpZI+vA1rgboAoM6oEEtYFDV/0KqDnqAbQDUfb3KhzOzA+B6C4CXAX0zc/4Sj7YEeLWAjmP5Crso2gvExuPxfRiG500VQRCczefz96bzoigyA26A46ai2Wx2F4bhw5pOcsfyF+6ibG+QEfD5T8AUeHOSvoAE0AbDqkrgSVLpACTlwMsWoBJ49kP4M8WSXs1sAlyxfginQCJp6hN/VoGkzMwegQ4QAe3FYpECOZDRsE++AWYTYG33oiq+AAAAAElFTkSuQmCC");
 }
 
 #earth_div1, #earth_div2 {
   position:absolute !important;
-  top: 100px;
-  right: 0; 
-  bottom: 0; 
-  left: 0; 
-  background-color: rgb(10, 10, 10);
+  inset: 100px 0 0; 
+  background-color: rgb(10 10 10);
   background: url("https://upload.wikimedia.org/wikipedia/commons/0/09/Night_stars_berlin.png");
   background-size: contain;
   animation: scroll 250s linear infinite;
@@ -24,7 +20,7 @@
 
 @keyframes scroll {
   100% {
-    background-position: 0px -400%;
+    background-position: 0 -400%;
   }
 }
 

@@ -1,6 +1,3 @@
-/* Importing Google Fonts and external CSS file */
-@import url("/global.css");
-
 /* Styling for the quote section */
 #quote {
     font: italic xx-large/1.5 var(--cursive), Times;

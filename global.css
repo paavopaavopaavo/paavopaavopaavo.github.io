@@ -1,27 +1,20 @@
-/* IMPORT FONTS */
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+J:ital,wght@1,100..400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-
 :root {
     /* COLORS */
     --website-theme-color: darkseagreen;
     --website-theme-dark: seagreen;
-    --website-theme-light: rgb(170, 226, 186);
-    --website-accent: rgb(117, 156, 222);
-    --website-background-color: rgb(255, 255, 255);
-
-    --light-gray: rgb(239, 239, 239);
-    --gray: rgb(185, 185, 185);
-    --dark-gray: rgb(30, 102, 84);
-    --slightly-darker-gray: rgb(107, 106, 106);
-    --darker-gray: rgb(56, 56, 56);
+    --website-theme-darker: color-mix(in hsl, seagreen, rgb(40 40 40));
+    --website-theme-light: rgb(170 226 186);
+    --website-accent: rgb(117 156 222);
+    --website-background-color: rgb(255 255 255);
+    --light-gray: rgb(239 239 239);
+    --gray: rgb(185 185 185);
+    --dark-gray: rgb(30 102 84);
+    --slightly-darker-gray: rgb(107 106 106);
+    --darker-gray: rgb(56 56 56);
 
     /* FONTS */
-
     --base: "Raleway", sans-serif;
-    --title: "Rubik Mono One", sans-serif;
+    --title: "Gravitas One", sans-serif;
     --cursive: "Playwrite GB J", cursive;
     --monospace: "IBM Plex Mono", monospace;
 
@@ -47,49 +40,52 @@ h1 {
 h2 {
     font-family: var(--title);
     font-size: 1.5rem;
-    color: var(--slightly-darker-gray);
+    color: var(--darker-gray);
 }
 
 h3 {
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-family: var(--title);
+    font-size: 1.15rem;
+    color: var(--darker-gray);
     text-transform: uppercase;
 }
 
 button {
-    background-color: var(--website-background-color);
-    display: inline-block; /* Change display property to inline-block */
-    border: 1.25px solid var(--website-theme-dark);
-    color: var(--dark-gray);
-    font-family: var(--base), sans-serif;
-    width: max-content; /* Set width to max-content to fit the content */
-    height: 5vh;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
     margin: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    vertical-align: middle; /* Add vertical-align property to align buttons properly */
+    border: 1px solid lightgray;
+    border-radius: 7.5px;
+    background: var(--website-background-color);
+    padding: 10px;
+    font-family: var(--base), sans-serif;
+    font-size: 1rem;
+    transition: box-shadow .2s ease-in-out;
+    transition: background-color .2s ease-in-out, border .2s ease-in-out, color .2s ease-in-out;
+    cursor: pointer;
 }
-button:disabled {
-    background-color: var(--website-background-color);
-    border: 1.25px solid var(--gray);
-    color: var(--light-gray);
-    border-radius: 10px;
-}
-  
+
+
 button:hover {
     background-color: var(--website-theme-dark);
     border: 1.25px solid var(--website-theme-dark);
     color: var(--website-background-color);
 }
 
+button:active {
+    background-color: var(--website-theme-darker);
+    border: 1.25px solid var(--website-theme-darker);
+    color: var(--website-background-color);
+}
+
+button:disabled {
+    background-color: var(--website-background-color);
+    border: 1.25px solid var(--gray);
+    color: var(--light-gray);
+}
+
 button:disabled:hover {
     background-color: var(--website-background-color);
     border: 1.25px solid var(--gray);
-    color: lightgray;
-    border-radius: 10px;
+    color: var(--light-gray);
     cursor: default;
 }
 
@@ -98,12 +94,13 @@ input {
     border: 1px solid lightgray;
     border-radius: 5px;
     background: var(--website-background-color);
-    padding: 5px;
+    padding: 7.5px;
     font-family: var(--base), sans-serif;
+    font-size: 1rem;
     transition: box-shadow .2s ease-in-out;
 }
 
-input[type=color] {
+input[type="color"] {
     display: inline-block; /* Change display property to inline-block */
     border: 1.25px solid var(--website-theme-dark);
     width: 4.25rem; /* Set width to max-content to fit the content */
@@ -114,8 +111,17 @@ input[type=color] {
     padding-left: 15px;
     padding-right: 15px;
     appearance: none;
-    -webkit-appearance: none; /* For Chrome, Safari, and Opera */
-    -moz-appearance: none; /* For Firefox */
+}
+
+select {
+    margin: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background: var(--website-background-color);
+    padding: 5px;
+    font-family: var(--base), sans-serif;
+    font-size: 1rem;
+    transition: box-shadow .2s ease-in-out;
 }
 
 p {
@@ -130,12 +136,15 @@ a {
 a:link {
     color: var(--website-theme-color);
 }
+
 a:visited {
     color: var(--website-theme-color);
 }
+
 a:hover {
     color: var(--website-theme-dark);
 }
+
 a:active {
     color: var(--website-theme-color);
 }
@@ -152,13 +161,13 @@ kbd {
     border: 3px solid var(--gray);
     border-radius: 3px;
     padding: 2px;
-    box-shadow: 0px 5px var(--dark-gray);
+    box-shadow: 0 5px var(--dark-gray);
     cursor: pointer;
     transition: box-shadow .2s ease-in-out, transform .2s ease-in-out;
 }
 
 kbd:hover {
-    box-shadow: 0px 2px var(--dark-gray);
+    box-shadow: 0 2px var(--dark-gray);
 }
 
 code {
@@ -189,7 +198,6 @@ fieldset {
     border: 1px solid var(--gray);
     border-radius: 5px;
     padding: 10px;
-    margin: 10px;
     background-color: var(--website-background-color);
     max-width: 50px;
     margin: auto;
@@ -232,7 +240,7 @@ legend {
     color: var(--darker-gray)
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (width <= 700px) {
     h1 {
         font-size: 1.75rem
     }
@@ -244,36 +252,43 @@ NAVBAR -=- FOOTER -=- NAVBAR -=- FOOTER -=- NAVBAR -=- FOOTER -=- NAVBAR -=- FOO
 
 */
 
+    nav {
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+
     #homepage-link {
         width: 50px;
-        margin-bottom: 10px;
+        display: flex;
+        justify-content: left;
     }
-    
+
     .navbar {
         list-style-type: none;
         margin: 0;
-        padding-top: 10px;
+        padding: 10px 0 0;
         background-color: var(--website-background-color);
         display: flex;
-        justify-content: center;
-        align-items: center; /* Center items vertically */
+        justify-content: center; /* Centers items horizontally */
+        align-items: center;    /* Centers items vertically */
         transition: color 0.2s;
-        width: calc(100%-10px); /* Set width to 100% of parent container */
+        width: 100%;
+        padding-inline-start: 0;
     }
         
     .navbar-link {
-        display: inline;
-        float: left;
         cursor: pointer;
         display: block;
         padding: 12px;
         color: var(--website-theme-dark);
         text-decoration: none;
     }
-    
+
     ul li a img {
         vertical-align: middle; /* Ensure image is vertically aligned */
     }
+
     
     footer {
         color: gray;
@@ -285,10 +300,6 @@ NAVBAR -=- FOOTER -=- NAVBAR -=- FOOTER -=- NAVBAR -=- FOOTER -=- NAVBAR -=- FOO
         width: 100%;
         margin-top: 250px; /* Ensure footer stays at the bottom */
         margin-bottom: 0;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -o-user-select: none;
         user-select: none;
     }
 
@@ -331,4 +342,18 @@ NAVBAR -=- FOOTER -=- NAVBAR -=- FOOTER -=- NAVBAR -=- FOOTER -=- NAVBAR -=- FOO
     .event-info {
         font-size: 1.1rem;
         padding-bottom: 7.5px;
+    }
+
+    @media screen and (width <= 400px) {
+        nav {
+            font-size: 1.3rem;
+        }
+
+        #homepage-link {
+            width: 50px;
+        }
+
+        .navbar-link {
+            padding: 9px;
+        }    
     }

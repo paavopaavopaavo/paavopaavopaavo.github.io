@@ -1,2 +1,8 @@
 .DS_Store
 .vscode
+.stylelintrc.json
+.eslintrc.json
+eslint.config.mjs
+yarn.lock
+package.json
+node_modules

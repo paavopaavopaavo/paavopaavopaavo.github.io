@@ -26,15 +26,19 @@ function openLightbox(imgElement) {
     const modal = document.getElementById('lightbox-modal');
     const modalImg = document.getElementById('lightbox-image');
     const modalTitle = document.getElementById('lightbox-title');
+    const modalMedium = document.getElementById('lightbox-medium');
     const captionText = document.getElementById('lightbox-caption');
 
     const artDiv = imgElement.closest('.art');
-    const title = artDiv.querySelector('h2').innerHTML || '';
+    const title = artDiv.querySelector('.art-title').textContent.trim() || '';
     modalTitle.textContent = title;
     currentArtId = artDiv.id;
-
+    
     const artDesc = artDiv.querySelector('.art-desc').innerHTML;
     captionText.innerHTML = artDesc;
+
+    const artMedium = artDiv.querySelector('.art-medium').innerHTML;
+    modalMedium.innerHTML = artMedium;
 
     // Check if the image has a data-gallery attribute
     const galleryName = imgElement.getAttribute('data-gallery');
