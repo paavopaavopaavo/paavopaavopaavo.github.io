@@ -79,7 +79,7 @@ button:active {
 button:disabled {
     background-color: var(--website-background-color);
     border: 1.25px solid var(--gray);
-    color: var(--light-gray);
+    color: var(--gray);
 }
 
 button:disabled:hover {
