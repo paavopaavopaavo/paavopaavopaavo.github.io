@@ -60,7 +60,7 @@ function checkDate() {
         document.documentElement.style.setProperty('--website-theme-color', '#e24304');
         document.documentElement.style.setProperty('--website-theme-dark', '#9a2b00');
         document.documentElement.style.setProperty('--website-theme-light', '#ff9047');
-        changeFooter('<p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-solid fa-crow fa-bounce halloween-raven" onclick="halloweenRavenSound()" style="cursor: pointer;"></i></p>');
+        changeFooter('<p>© Paavo Sadeharju 2024. <i class="fa-solid fa-crow fa-bounce halloween-raven" onclick="halloweenRavenSound()" style="cursor: pointer;"></i></p>');
     } else if (month === 12) {
     
         navbarLogo.src = "/assets/timed/christmas.png";
@@ -77,7 +77,6 @@ function checkDate() {
         document.documentElement.style.setProperty('--website-theme-color', 'green');
         document.documentElement.style.setProperty('--website-theme-dark', 'red');
         document.documentElement.style.setProperty('--website-theme-light', '#dbfffd');
-        changeFooter('<p>© Paavo Sadeharju 2024. All rights reserved. <i class="fa-solid fa-gift fa-bounce christmas-gift" onclick="christmasGiftThing()" style="cursor: pointer;"></i></p>');
         function christmasGift() {
             const colors = ['red', 'purple', 'hotpink', 'orange', 'blue', 'green', 'teal'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];

@@ -39,7 +39,7 @@ h2 {
     max-width: 50%;
     max-height: 90vh;
     padding: 15px;
-    background-color: var(--light-gray);
+    background-color: whitesmoke;
     box-shadow: rgb(45 45 45 / 50%) 15px 15px 10px;
     display: block;
     box-sizing: border-box;

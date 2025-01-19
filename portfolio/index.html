@@ -10,7 +10,6 @@
     <meta property="og:image:height" content="450">
     <title>Portfolio - Paavopaavopaavo</title>
     <meta charset="UTF-8">
-    <script src="/global.js"></script>
     <script src="https://kit.fontawesome.com/f4f28f6586.js" crossorigin="anonymous"></script>
     <script>
         window.addEventListener('load', function() {
@@ -43,7 +42,7 @@
 
     <h1>Portfolio</h1>
     <p id="start-text">
-        Hiya! This is my own little art gallery/art folder. I just put everything I make here. 
+        Hi! This is my own little art gallery/art folder. I just put everything I make here. 
         If you like my little paintings and sculptures and what not, you can <a id="link-share" onclick="share()" href="javascript:;">share this website</a> for others to see! <br>
         Clicking on an image will open a lightbox, where you can view the image in full resolution, zoom in and share the specific piece of art.
     </p>
@@ -51,11 +50,17 @@
     
     
     <div id="art-container">
+        <div id="cow-untitled" class="art">
+            <img src="./artwork/cow.png" data-full="./artwork/couch.png" class="art-image" onclick="openLightbox(this)" alt="Watercolour painting of a couch.">
+            <h2 class="art-title">Untitled</h2>
+            <span class="art-medium">Oil on canvas</span>
+            <p class="art-desc">My first ever oil painting! It was a lot of fun, I'm happy with how the cow turned out.</p>
+        </div>
         <div id="couch" class="art">
             <img src="./artwork/couch.png" data-full="./artwork/couch.png" class="art-image" onclick="openLightbox(this)" alt="Watercolour painting of a couch.">
             <h2 class="art-title">Couch </h2>
             <span class="art-medium">Watercolour on paper</span>
-            <p class="art-desc">A couch, also known as a sofa, settee, chesterfield, or davenport<sup><a href="">[1]</a></sup>, is a cushioned item of furniture that can seat multiple people. Above, is a painting of one.</p>
+            <p class="art-desc">A couch, also known as a sofa, settee, chesterfield, or davenport<sup><a href="https://www.merriam-webster.com/thesaurus/couch">[1]</a></sup>, is a cushioned item of furniture that can seat multiple people. Above, is a painting of one.</p>
         </div>
         <div id="wizardofoz" class="art">
             <img src="./artwork/wizardofoz.png" data-full="./artwork/wizardofoz.png" class="art-image" onclick="openLightbox(this)" alt="Scene from the movie Wizard Of Oz, with the emerald city behind the yellow brick road.">
@@ -97,7 +102,7 @@
             <img src="./artwork/roses.jpg" data-full="./artwork/roses.jpg" class="art-image" onclick="openLightbox(this)" alt="A watercolour painting of two roses.">
             <h2 class="art-title">Roses</h2>
             <span class="art-medium">Watercolour on paper</span>
-            <p class="art-desc">I was looking for inspiration and some roses were on a vase. "Inspiration can strike anywhere!", right?</p>
+            <p class="art-desc">I tried to make it more 3D, turned into something abstract.</p>
         </div>
         <div id="daffodils" class="art">
             <img src="./artwork/daffodils.jpg" data-full="./artwork/daffodils.jpg" class="art-image" onclick="openLightbox(this)" alt="A skull placed on a daffodil field. The skull has a snail on it.">
@@ -112,10 +117,6 @@
             <p class="art-desc"><i>...like sugar and spice...</i> It's actually just salt and pepper shakes.</p>
         </div>
     </div>
-    
-    <p id="start-text">
-        <i>"Why so many skulls?"</i> Skulls are a geometrically complex shape that can easily be recognized. Also I like them.<br> 
-    </p>
     
     <!-- Lightbox Modal -->
     <div id="lightbox-modal">

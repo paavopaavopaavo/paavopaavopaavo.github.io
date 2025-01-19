@@ -2,7 +2,7 @@
     /* COLORS */
     --website-theme-color: darkseagreen;
     --website-theme-dark: seagreen;
-    --website-theme-darker: color-mix(in hsl, seagreen, rgb(40 40 40));
+    --website-theme-darker: color-mix(in hsl, var(--website-theme-dark), rgb(40 40 40));
     --website-theme-light: rgb(170 226 186);
     --website-accent: rgb(117 156 222);
     --website-background-color: rgb(255 255 255);
@@ -14,9 +14,9 @@
 
     /* FONTS */
     --base: "Raleway", sans-serif;
-    --title: "Gravitas One", sans-serif;
-    --cursive: "Playwrite GB J", cursive;
-    --monospace: "IBM Plex Mono", monospace;
+    --title: "Gravitas One", var(--base), sans-serif;
+    --cursive: "Playwrite GB J", var(--base), cursive;
+    --monospace: "IBM Plex Mono", var(--base), monospace;
 
 }
 
